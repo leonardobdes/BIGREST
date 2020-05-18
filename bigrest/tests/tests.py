@@ -1,5 +1,4 @@
 """BIGREST SDK tests file"""
-
 # External Imports
 # Import only with 'import package',
 # it will make explicity in the code where it came from.
@@ -10,9 +9,10 @@ import getpass
 from ..bigrest import BIGREST
 
 # Get username, password, and ip
-username = getpass.getuser()
+print('Username: ', end='')
+username = input()
 password = getpass.getpass()
-print('Device IP or name:')
+print('Device IP or name: ', end='')
 ip = input()
 
 # Create a device object
