@@ -8,8 +8,8 @@ import urllib3
 # Internal Imports
 # Import only with 'from x import y', to simplify the code.
 
-from bigrest.common.exceptions import InvalidOptionError
-from bigrest.common.exceptions import RESTAPIError
+from ..common.exceptions import InvalidOptionError
+from ..common.exceptions import RESTAPIError
 
 # Disable urllib3 SSL warnings
 urllib3.disable_warnings()

@@ -13,11 +13,11 @@ import pathlib
 # Internal Imports
 # Import only with 'from x import y', to simplify the code.
 
-from bigrest.common.restobject import RESTObject
-from bigrest.common.exceptions import RESTAPIError
-from bigrest.common.exceptions import InvalidOptionError
-from bigrest.common.constants import TOKEN_EXTRA_TIME
-from bigrest.common.constants import REST_API_MAXIMUM_CHUNK_SIZE
+from .common.restobject import RESTObject
+from .common.exceptions import RESTAPIError
+from .common.exceptions import InvalidOptionError
+from .common.constants import TOKEN_EXTRA_TIME
+from .common.constants import REST_API_MAXIMUM_CHUNK_SIZE
 
 # Disable urllib3 SSL warnings
 urllib3.disable_warnings()
@@ -67,6 +67,9 @@ class BIGREST:
         self.session.headers.update({'Content-Type': 'application/json'})
         self.session.verify = False
 
+        # Connect to device
+        self._connect()
+
     def load(self, path: str) -> list[RESTObject]:
         """
         Send a GET request to the iControl REST API.
@@ -87,7 +90,7 @@ class BIGREST:
             objects.append(RESTObject(response_json))
         return objects
 
-    def save(self, path: str, obj: RESTObject) -> RESTObject:
+    def save(self, obj: RESTObject) -> RESTObject:
         """
         Send a PUT request to the iControl REST API.
         This will save on the device, the object modifications that were made.
@@ -95,6 +98,7 @@ class BIGREST:
 
         if self.request_token or self.refresh_token is not None:
             self._check_token()
+        path = self._get_path(obj)
         response = self.session.put(self._url(path), json=obj.asdict())
         if response.status_code != 200:
             raise RESTAPIError(response)
@@ -216,7 +220,7 @@ class BIGREST:
     def __exit__(self, type, value, traceback) -> None:
         self.transaction_finish()
 
-    def validate_transaction(self) -> RESTObject:
+    def transaction_validate(self) -> RESTObject:
         """
         Send a PATCH request to the iControl REST API.
         Create validate a transaction.
@@ -230,11 +234,13 @@ class BIGREST:
         data['state'] = 'VALIDATING'
         response = self.session.patch(
             self._url(f'/mgmt/tm/transaction/{self._transaction}'), json=data)
+        self.session.headers.update(
+            {'X-F5-REST-Coordination-Id': f'{self._transaction}'})
         if response.status_code != 200:
             raise RESTAPIError(response)
         return RESTObject(response.json())
 
-    def delete_transaction(self) -> None:
+    def transaction_delete(self) -> None:
         """
         Send a DELETE request to the iControl REST API.
         Delete the transaction.
@@ -309,7 +315,8 @@ class BIGREST:
         Send a GET request to the iControl REST API.
         Download a file from the device.
         """
-
+        
+        # Content-Range: <range-start>-<range-end>/<size>
         if self.request_token or self.refresh_token is not None:
             self._check_token()
         self.session.headers.update(
@@ -350,6 +357,7 @@ class BIGREST:
         Upload a file to the device.
         """
 
+        # Content-Range: <range-start>-<range-end>/<size>
         if self.request_token or self.refresh_token is not None:
             self._check_token()
         self.session.headers.update(
@@ -425,3 +433,27 @@ class BIGREST:
         self._token = response.json()['token']['token']
         self.session.headers.update({'X-F5-Auth-Token': f'{self._token}'})
         self._token_timeout = response.json()['token']['timeout']
+
+    def _get_path(self, obj: RESTObject) -> str:
+        self_link = obj.properties['selfLink']
+        # remove https://localhost
+        self_link = self_link[17:]
+        return self_link
+
+    def _connect(self) -> None:
+        """
+        Send a GET request to the iControl REST API.
+        Return true or false indicating if the object exists or not.
+        """
+
+        if self.request_token or self.refresh_token is not None:
+            self._get_token()
+        else:
+            data = {}
+            data['username'] = self.username
+            data['password'] = self.password
+            data['loginProviderName'] = self.login_provider
+            response = self.session.post(
+                f'https://{self.device}/mgmt/shared/authn/login', json=data)
+            if response.status_code != 200:
+                raise RESTAPIError(response)

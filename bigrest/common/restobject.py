@@ -5,7 +5,7 @@
 # Turns all annotations into string literals.
 # This is one exception to the external import rule.
 from __future__ import annotations
-
+import json
 
 class RESTObject():
     """Represent a object created from a response to an iControl REST call."""
@@ -21,6 +21,9 @@ class RESTObject():
                 self.properties['disabled'] = True
         if 'disabled' in self.properties:
             if self.properties['disabled'] is True:
-                self.properties.pop('enabled')
+                self.properties.pop('disabled')
                 self.properties['enabled'] = True
         return self.properties
+
+    def __str__(self) -> str:
+        return json.dumps(self.properties, indent=4)
