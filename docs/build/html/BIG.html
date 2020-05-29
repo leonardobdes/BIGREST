@@ -1,0 +1,450 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>BIG &mdash; BIGREST 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Introduction" href="Introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> BIGREST
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">BIG-IP:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">BIG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#code">Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#explanation">Explanation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">BIG-IQ:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">BIG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#code">Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#explanation">Explanation</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BIGREST</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>BIG</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/BIG.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="big">
+<h1>BIG<a class="headerlink" href="#big" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="code">
+<h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="bigrest.big.BIG">
+<em class="property">class </em><code class="sig-prename descclassname">bigrest.big.</code><code class="sig-name descname">BIG</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">username</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">password</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">login_provider</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'tmos'</span></em>, <em class="sig-param"><span class="n">request_token</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">token</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">refresh_token</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">debug</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bigrest.big.BIG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Defines methods to call the REST API that can be used by BIG-IP or BIG-IQ.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device</strong> – Name or IP of the device to send the REST requests.</p></li>
+<li><p><strong>username</strong> – Username used to login to the device.</p></li>
+<li><p><strong>password</strong> – Password used to login to the device.</p></li>
+<li><p><strong>login_provider</strong> – Login provider used to authenticate the user.</p></li>
+<li><p><strong>request_token</strong> – Indicates if token should be requested from the
+device and used for HTTP requests.</p></li>
+<li><p><strong>token</strong> – Token to be used to send HTTP requests to the device.</p></li>
+<li><p><strong>refresh_token</strong> – Refresh token to be used to request new token,
+the new token will be then used for HTTP requests.</p></li>
+<li><p><strong>debug</strong> – Debug file name to be used to output the debug information.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Exceptions:</dt><dd><p>InvalidOptionError: Raised when invalid options are used as arguments.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="bigrest.big.BIG.command">
+<code class="sig-name descname">command</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">data</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#bigrest.big.BIG.command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes a command on the device.</p>
+<p>Sends an HTTP POST request to the iControl REST API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – HTTP path used in the HTTP request sent to the device.</p></li>
+<li><p><strong>data</strong> – Payload that will be sent to the device.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Exceptions:</dt><dd><p>RESTAPIError: Raised when iControl REST API retruns an error.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="bigrest.big.BIG.create">
+<code class="sig-name descname">create</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">data</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#bigrest.common.restobject.RESTObject" title="bigrest.common.restobject.RESTObject">bigrest.common.restobject.RESTObject</a><a class="headerlink" href="#bigrest.big.BIG.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the object in the device.</p>
+<p>Sends an HTTP POST request to the iControl REST API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – HTTP path used in the HTTP request sent to the device.</p></li>
+<li><p><strong>data</strong> – Payload that will be sent to the device.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Exceptions:</dt><dd><p>RESTAPIError: Raised when iControl REST API retruns an error.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="bigrest.big.BIG.delete">
+<code class="sig-name descname">delete</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#bigrest.big.BIG.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the object in the device.</p>
+<p>Sends an HTTP DELETE request to the iControl REST API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> – HTTP path used in the HTTP request sent to the device.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Exceptions:</dt><dd><p>RESTAPIError: Raised when iControl REST API retruns an error.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="bigrest.big.BIG.download">
+<code class="sig-name descname">download</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">filename</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#bigrest.big.BIG.download" title="Permalink to this definition">¶</a></dt>
+<dd><p>Downloads a file from the device.</p>
+<p>Sends an HTTP GET request to the iControl REST API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – HTTP path used in the HTTP request sent to the device.</p></li>
+<li><p><strong>filename</strong> – Name of the file to be downloaded.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Exceptions:</dt><dd><p>RESTAPIError: Raised when iControl REST API retruns an error.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="bigrest.big.BIG.example">
+<code class="sig-name descname">example</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#bigrest.common.restobject.RESTObject" title="bigrest.common.restobject.RESTObject">bigrest.common.restobject.RESTObject</a><a class="headerlink" href="#bigrest.big.BIG.example" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets an example of an object from the device.</p>
+<p>Sends an HTTP GET request to the iControl REST API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> – HTTP path used in the HTTP request sent to the device.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Exceptions:</dt><dd><p>RESTAPIError: Raised when iControl REST API retruns an error.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="bigrest.big.BIG.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; list<span class="p">[</span>RESTObject<span class="p">]</span><a class="headerlink" href="#bigrest.big.BIG.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads a list of objects from the device.</p>
+<p>Sends an HTTP GET request to the iControl REST API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> – HTTP path used in the HTTP request sent to the device.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Exceptions:</dt><dd><p>RESTAPIError: Raised when iControl REST API retruns an error.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="bigrest.big.BIG.modify">
+<code class="sig-name descname">modify</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">data</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#bigrest.common.restobject.RESTObject" title="bigrest.common.restobject.RESTObject">bigrest.common.restobject.RESTObject</a><a class="headerlink" href="#bigrest.big.BIG.modify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modifies the object in the device.</p>
+<p>Sends an HTTP PATCH request to the iControl REST API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – HTTP path used in the HTTP request sent to the device.</p></li>
+<li><p><strong>data</strong> – Payload that will be sent to the device.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Exceptions:</dt><dd><p>RESTAPIError: Raised when iControl REST API retruns an error.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="bigrest.big.BIG.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#bigrest.common.restobject.RESTObject" title="bigrest.common.restobject.RESTObject">bigrest.common.restobject.RESTObject</a></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#bigrest.common.restobject.RESTObject" title="bigrest.common.restobject.RESTObject">bigrest.common.restobject.RESTObject</a><a class="headerlink" href="#bigrest.big.BIG.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves on the device the changes that were made locally to the object.</p>
+<p>Sends an HTTP PUT request to the iControl REST API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> – HTTP path used in the HTTP request sent to the device.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Exceptions:</dt><dd><p>RESTAPIError: Raised when iControl REST API retruns an error.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="bigrest.big.BIG.show">
+<code class="sig-name descname">show</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; list<span class="p">[</span>RESTObject<span class="p">]</span><a class="headerlink" href="#bigrest.big.BIG.show" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets statistical information about the object from the device.</p>
+<p>Similar to tmsh show command.</p>
+<p>Sends an HTTP GET request to the iControl REST API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> – HTTP path used in the HTTP request sent to the device.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Exceptions:</dt><dd><p>RESTAPIError: Raised when iControl REST API retruns an error.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="bigrest.big.BIG.upload">
+<code class="sig-name descname">upload</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">filename</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#bigrest.big.BIG.upload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uploads a file to the device.</p>
+<p>Sends an HTTP POST request to the iControl REST API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – HTTP path used in the HTTP request sent to the device.</p></li>
+<li><p><strong>filename</strong> – Name of the file to be uploaded.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Exceptions:</dt><dd><p>RESTAPIError: Raised when iControl REST API retruns an error.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-bigrest.common.restobject"></span><dl class="py class">
+<dt id="bigrest.common.restobject.RESTObject">
+<em class="property">class </em><code class="sig-prename descclassname">bigrest.common.restobject.</code><code class="sig-name descname">RESTObject</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">properties</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bigrest.common.restobject.RESTObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents a object created from a response to iControl REST API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>properties</strong> – Represents the properties of the object.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="bigrest.common.restobject.RESTObject.asdict">
+<code class="sig-name descname">asdict</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#bigrest.common.restobject.RESTObject.asdict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts the object to a dictionary.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">a</span><span class="o">.</span><span class="n">b</span><span class="p">:</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="explanation">
+<h2>Explanation<a class="headerlink" href="#explanation" title="Permalink to this headline">¶</a></h2>
+<p>a.b</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="Introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Leonardo Souza
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

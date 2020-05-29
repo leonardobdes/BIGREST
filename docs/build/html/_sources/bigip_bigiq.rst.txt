@@ -1,0 +1,64 @@
+BIG-IP API vs BIG-IQ API
+========================
+
+| Majority of the F5 iControl REST API functionalities are the same for both BIG-IP and BIG-IQ.
+| However, some major differences exist, so BIGREST treats BIG-IP and BIG-IQ devices different.
+| For BIG-IP use the class BIGIP, for BIG-IQ use the class BIGIQ.
+
+BIG-IP
+------
+
+**TOC**
+
+When using BIGREST for a BIG-IP device, the simplest way to find out the HTTP path you need is to use the TOC.
+
+To access TOC:
+
+.. code-block::
+
+   https://<hostname or IP>/mgmt/toc
+
+**API**
+
+| BIG-IP API use is simpler than BIG-IQ API.
+| Majority of the HTTP paths starts with **/mgmt/tm/**.
+
+| There are also some HTTP paths that I guess were create to be used by BIG-IQ when managing a BIG-IP device.
+| Those HTTP paths start with **/mgmt/cm/**.
+
+| The API is similar to tmsh commands.
+| If you want to list all virtual servers using tmsh you do:
+
+.. code-block::
+
+   tmsh list ltm virtual
+
+If you want list all virtual servers using the API, you do:
+
+.. code-block::
+
+   GET https://<hostname or IP>/mgmt/tm/ltm/virtual
+
+If you want to list a single virtual server using tmsh you do:
+
+.. code-block::
+
+   tmsh list ltm virtual <virtual server name>
+
+If you want to list a single virtual server using the API you do:
+
+.. code-block::
+
+   GET https://<hostname or IP>/mgmt/tm/ltm/virtual/<virtual server name>
+
+**Documentation**
+
+| iControlREST Home:
+| https://clouddocs.f5.com/api/icontrol-rest/
+
+| iControl REST User Guide provides a good explanation about the API:
+| https://cdn.f5.com/websites/devcentral.f5.com/downloads/icontrol-rest-api-user-guide-14-1-0.pdf
+| At the time I am writing this documentation, 14.1.0 is the lastest version for this guide, but 15.1.0 is the latest BIG-IP version.
+
+| For the full list of HTTP paths for 15.1.0, see this file:
+| link

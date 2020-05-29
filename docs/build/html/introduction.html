@@ -1,0 +1,336 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction &mdash; BIGREST 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="BIG-IP API vs BIG-IQ API" href="bigip_bigiq.html" />
+    <link rel="prev" title="BIGREST - A Python SDK for F5 iControl REST API" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> BIGREST
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-bigrest">What is BIGREST?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bigrest-functionalities">BIGREST functionalities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#source-code">Source code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#author">Author</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-install">How to install?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-use">How to use?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-get-help">How to get help?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-report-bugs">How to report bugs?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-request-new-functionalities">How to request new functionalities?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_bigiq.html">BIG-IP API vs BIG-IQ API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">BIG-IP:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="BIG.html">BIG</a></li>
+</ul>
+<p class="caption"><span class="caption-text">BIG-IQ:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="BIG.html">BIG</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BIGREST</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Introduction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/introduction.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-bigrest">
+<h2>What is BIGREST?<a class="headerlink" href="#what-is-bigrest" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">F5 BIG-IP and BIG-IQ devices have an API called iControl REST.</div>
+<div class="line">BIGREST is a SDK with multiple methods and functions that simplifies the use of the iControl REST API.</div>
+</div>
+</div>
+<div class="section" id="bigrest-functionalities">
+<h2>BIGREST functionalities<a class="headerlink" href="#bigrest-functionalities" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Supports partition</p></li>
+<li><p>Supports route domain</p></li>
+<li><p>Implements all HTTP methods used in the iControl REST API</p></li>
+<li><p>Implements HTTP path /stats</p></li>
+<li><p>Implements HTTP path /example</p></li>
+<li><p>Implements command</p></li>
+<li><p>Implements task</p></li>
+<li><p>Implements transaction</p></li>
+</ul>
+</div>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>link</p>
+</div>
+<div class="section" id="source-code">
+<h2>Source code<a class="headerlink" href="#source-code" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/leonardobdes/BIGREST">https://github.com/leonardobdes/BIGREST</a></p>
+</div>
+<div class="section" id="author">
+<h2>Author<a class="headerlink" href="#author" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><strong>Name:</strong></div>
+<div class="line">Leonardo Souza</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>LinkedIn:</strong></div>
+<div class="line"><a class="reference external" href="https://uk.linkedin.com/in/leonardobdes">https://uk.linkedin.com/in/leonardobdes</a></div>
+</div>
+</div>
+<div class="section" id="how-to-install">
+<h2>How to install?<a class="headerlink" href="#how-to-install" title="Permalink to this headline">¶</a></h2>
+<p><strong>Requires Python version 3.7</strong></p>
+<p>Install BIGREST using Python <strong>pip</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">bigrest</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-to-use">
+<h2>How to use?<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h2>
+<p><strong>In the following example:</strong></p>
+<dl class="field-list simple">
+<dt class="field-odd">192.168.1.245</dt>
+<dd class="field-odd"><p>IP or name of the F5 device.</p>
+</dd>
+<dt class="field-even">admin</dt>
+<dd class="field-even"><p>Username to be used to connect to the device.</p>
+</dd>
+<dt class="field-odd">password</dt>
+<dd class="field-odd"><p>Password to be used to connect to the device.</p>
+</dd>
+</dl>
+<p><strong>First, import the SDK:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bigrest</span> <span class="kn">import</span> <span class="n">BIGIP</span>
+</pre></div>
+</div>
+<p><strong>Next, create a device object:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="n">BIGIP</span><span class="p">(</span><span class="s2">&quot;192.168.1.245&quot;</span><span class="p">,</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Lastily, load all virtual servers and print their names:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">virtuals</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;/mgmt/tm/ltm/virtual&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">virtual</span> <span class="ow">in</span> <span class="n">virtuals</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">virtual</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">This is just a simple example, to give a first view about the SDK.</div>
+<div class="line">Detailed information about how to use the SDK will be provide in the next sections of this documentation.</div>
+</div>
+</div>
+<div class="section" id="how-to-get-help">
+<h2>How to get help?<a class="headerlink" href="#how-to-get-help" title="Permalink to this headline">¶</a></h2>
+<p>If you have problems to use this SDK, or to understand how the F5 iControl REST API works, use <a class="reference external" href="https://devcentral.f5.com/">DevCentral</a> website to get help.</p>
+</div>
+<div class="section" id="how-to-report-bugs">
+<h2>How to report bugs?<a class="headerlink" href="#how-to-report-bugs" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">Use <a class="reference external" href="https://github.com/leonardobdes/BIGREST/issues">GitHub</a> issues to report bugs.</div>
+<div class="line">For any bug, please provide the following information.</div>
+</div>
+<p><strong>BIGREST version:</strong></p>
+<p>Run the following command to find the version you are using.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">show</span> <span class="n">bigrest</span>
+</pre></div>
+</div>
+<p><strong>F5 device type:</strong></p>
+<p>BIG-IP or BIG-IQ</p>
+<p><strong>F5 device version:</strong></p>
+<p>Run the following command to find the version you are using.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tmsh</span> <span class="n">show</span> <span class="n">sys</span> <span class="n">version</span>
+</pre></div>
+</div>
+<p><strong>Python code to replicate the bug.</strong></p>
+<p><strong>Output generated when bug is triggered.</strong></p>
+</div>
+<div class="section" id="how-to-request-new-functionalities">
+<h2>How to request new functionalities?<a class="headerlink" href="#how-to-request-new-functionalities" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">Use <a class="reference external" href="https://github.com/leonardobdes/BIGREST/issues">GitHub</a> issues to request new functionalities.</div>
+<div class="line">Use the following format in the title <strong>RFE - Title</strong>.</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="bigip_bigiq.html" class="btn btn-neutral float-right" title="BIG-IP API vs BIG-IQ API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="BIGREST - A Python SDK for F5 iControl REST API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Leonardo Souza
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
