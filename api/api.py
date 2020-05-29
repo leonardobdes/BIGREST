@@ -1,5 +1,5 @@
 """
-Create files with API documentation.
+Creates a file with API path list.
 """
 
 # External Imports

@@ -1,0 +1,17 @@
+
+/autodeploy/cluster-software-images
+/autodeploy/default-boot-volume
+/autodeploy/mgmt-dhcp
+/autodeploy/mgmt-mac
+/autodeploy/qkview
+/autodeploy/qkview-downloads
+/autodeploy/reboot-device
+/autodeploy/software-image-downloads
+/autodeploy/software-image-uploads
+/autodeploy/software-images
+/autodeploy/software-volume-install
+/cloud/tenants/services/placement-filters/deviceHealthFilter
+/cloud/tenants/services/placement-filters/filter-js
+/system/authn/providers/tmos
+/system/authn/providers/tmos/1f44a60e-11a7-3c51-a49f-82983026b41b/users
+/system/authn/providers/tmos/1f44a60e-11a7-3c51-a49f-82983026b41b/users/21232f29-7a57-35a7-8389-4a0e4a801fc3
