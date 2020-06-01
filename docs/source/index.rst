@@ -8,19 +8,31 @@ BIGREST - A Python SDK for F5 iControl REST API
 
 .. toctree::
    :maxdepth: 1
-   :caption: Introduction:
+   :caption: Introduction
 
    introduction
    bigip_bigiq
+   utils
+   restobject
 
 .. toctree::
    :maxdepth: 1
-   :caption: BIG-IP:
+   :caption: BIG-IP
 
-   BIG
+   bigip
+   bigip_load
+   bigip_save
+   bigip_delete
+   bigip_create
+   bigip_modify
+   bigip_show
+   bigip_command
+   bigip_download
+   bigip_upload
+   bigip_example
 
 .. toctree::
    :maxdepth: 1
-   :caption: BIG-IQ:
+   :caption: BIG-IQ
 
    BIG

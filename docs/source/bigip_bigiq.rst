@@ -82,8 +82,14 @@ If you want to list a single virtual server using the API you do:
 | This askf5 solution provides many examples:
 | https://support.f5.com/csp/article/K13225405
 
-| For the full list of HTTP paths for 15.1.0, see this file:
-| link
+| Full list of HTTP paths for **/mgmt/tm** in 15.1.0:
+| https://raw.githubusercontent.com/leonardobdes/BIGREST/master/api/bigip_mgmt_tm_15_1_0.txt
+
+| Full list of HTTP paths for **/mgmt/cm** in 15.1.0:
+| https://raw.githubusercontent.com/leonardobdes/BIGREST/master/api/bigip_mgmt_cm_15_1_0.txt
+
+| Full list of HTTP paths for **/mgmt/shared** in 15.1.0:
+| https://raw.githubusercontent.com/leonardobdes/BIGREST/master/api/bigip_mgmt_shared_15_1_0.txt
 
 BIG-IQ
 ------
@@ -162,5 +168,13 @@ HTTP paths for functionality that is specific to the iControl REST API starts wi
 | This part of the documentation provides many examples:
 | https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/HowToSamples/bigiq_public_api_wf/t_bigiq_public_api_workflows.html
 
-| For the full list of HTTP paths for 7.10, see this file:
-| link
+| List of HTTP paths for **/mgmt/tm** in 7.1.0:
+| https://raw.githubusercontent.com/leonardobdes/BIGREST/master/api/bigiq_mgmt_tm_15_1_0.txt
+| BIG-IQ does not display the full list, so use BIG-IP list below as reference:
+| https://raw.githubusercontent.com/leonardobdes/BIGREST/master/api/bigip_mgmt_tm_15_1_0.txt
+
+| Full list of HTTP paths for **/mgmt/cm** in 7.1.0:
+| https://raw.githubusercontent.com/leonardobdes/BIGREST/master/api/bigiq_mgmt_cm_15_1_0.txt
+
+| Full list of HTTP paths for **/mgmt/shared** in 7.1.0:
+| https://raw.githubusercontent.com/leonardobdes/BIGREST/master/api/bigiq_mgmt_shared_15_1_0.txt

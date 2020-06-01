@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="BIG" href="BIG.html" />
+    <link rel="next" title="Utils" href="utils.html" />
     <link rel="prev" title="Introduction" href="introduction.html" /> 
 </head>
 
@@ -85,8 +85,11 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">BIG-IP API vs BIG-IQ API</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#big-ip">BIG-IP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#big-iq">BIG-IQ</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html#rest-format">rest_format</a></li>
 </ul>
 <p class="caption"><span class="caption-text">BIG-IP:</span></p>
 <ul>
@@ -174,6 +177,21 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">hostname</span> <span class="ow">or</span> <span class="n">IP</span><span class="o">&gt;/</span><span class="n">mgmt</span><span class="o">/</span><span class="n">toc</span>
 </pre></div>
 </div>
+<p><strong>API Discovery</strong></p>
+<div class="line-block">
+<div class="line">If you query root HTTP path of the API, it will show you all HTTP paths available.</div>
+<div class="line">Example:</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">hostname</span> <span class="ow">or</span> <span class="n">IP</span><span class="o">&gt;/</span><span class="n">mgmt</span><span class="o">/</span><span class="n">tm</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Also, you can also query a HTTP path to see the next paths available.</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">hostname</span> <span class="ow">or</span> <span class="n">IP</span><span class="o">&gt;/</span><span class="n">mgmt</span><span class="o">/</span><span class="n">tm</span><span class="o">/</span><span class="n">ltm</span>
+</pre></div>
+</div>
+<p>See the documentation section for a full list of HTTP paths.</p>
 <p><strong>API</strong></p>
 <div class="line-block">
 <div class="line">BIG-IP API use is simpler than BIG-IQ API.</div>
@@ -183,6 +201,7 @@
 <div class="line">There are also some HTTP paths that I guess were create to be used by BIG-IQ when managing a BIG-IP device.</div>
 <div class="line">Those HTTP paths start with <strong>/mgmt/cm/</strong>.</div>
 </div>
+<p>HTTP paths for functionality that is specific to the iControl REST API starts with <strong>/mgmt/shared/</strong></p>
 <div class="line-block">
 <div class="line">The API is similar to tmsh commands.</div>
 <div class="line">If you want to list all virtual servers using tmsh you do:</div>
@@ -204,7 +223,7 @@
 </div>
 <p><strong>Documentation</strong></p>
 <div class="line-block">
-<div class="line">iControlREST Home:</div>
+<div class="line">F5 site:</div>
 <div class="line"><a class="reference external" href="https://clouddocs.f5.com/api/icontrol-rest/">https://clouddocs.f5.com/api/icontrol-rest/</a></div>
 </div>
 <div class="line-block">
@@ -213,8 +232,110 @@
 <div class="line">At the time I am writing this documentation, 14.1.0 is the lastest version for this guide, but 15.1.0 is the latest BIG-IP version.</div>
 </div>
 <div class="line-block">
-<div class="line">For the full list of HTTP paths for 15.1.0, see this file:</div>
-<div class="line">link</div>
+<div class="line">This askf5 solution provides many examples:</div>
+<div class="line"><a class="reference external" href="https://support.f5.com/csp/article/K13225405">https://support.f5.com/csp/article/K13225405</a></div>
+</div>
+<div class="line-block">
+<div class="line">Full list of HTTP paths for <strong>/mgmt/tm</strong> in 15.1.0:</div>
+<div class="line"><a class="reference external" href="https://raw.githubusercontent.com/leonardobdes/BIGREST/master/api/bigip_mgmt_tm_15_1_0.txt">https://raw.githubusercontent.com/leonardobdes/BIGREST/master/api/bigip_mgmt_tm_15_1_0.txt</a></div>
+</div>
+<div class="line-block">
+<div class="line">Full list of HTTP paths for <strong>/mgmt/cm</strong> in 15.1.0:</div>
+<div class="line"><a class="reference external" href="https://raw.githubusercontent.com/leonardobdes/BIGREST/master/api/bigip_mgmt_cm_15_1_0.txt">https://raw.githubusercontent.com/leonardobdes/BIGREST/master/api/bigip_mgmt_cm_15_1_0.txt</a></div>
+</div>
+<div class="line-block">
+<div class="line">Full list of HTTP paths for <strong>/mgmt/shared</strong> in 15.1.0:</div>
+<div class="line"><a class="reference external" href="https://raw.githubusercontent.com/leonardobdes/BIGREST/master/api/bigip_mgmt_shared_15_1_0.txt">https://raw.githubusercontent.com/leonardobdes/BIGREST/master/api/bigip_mgmt_shared_15_1_0.txt</a></div>
+</div>
+</div>
+<div class="section" id="big-iq">
+<h2>BIG-IQ<a class="headerlink" href="#big-iq" title="Permalink to this headline">¶</a></h2>
+<p><strong>TOC</strong></p>
+<p>BIG-IQ does not have TOC.</p>
+<p><strong>API Discovery</strong></p>
+<div class="line-block">
+<div class="line">If you query root HTTP path of the API, it will show you all HTTP paths available.</div>
+<div class="line">Example:</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">hostname</span> <span class="ow">or</span> <span class="n">IP</span><span class="o">&gt;/</span><span class="n">mgmt</span><span class="o">/</span><span class="n">cm</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Unfortunally, BIG-IQ does not implement next HTTP paths for all paths, so the following does not work in BIG-IQ.</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">hostname</span> <span class="ow">or</span> <span class="n">IP</span><span class="o">&gt;/</span><span class="n">mgmt</span><span class="o">/</span><span class="n">cm</span><span class="o">/</span><span class="n">adc</span><span class="o">-</span><span class="n">core</span><span class="o">/</span><span class="n">working</span><span class="o">-</span><span class="n">config</span><span class="o">/</span><span class="n">ltm</span>
+</pre></div>
+</div>
+<p>See the documentation section for a full list of HTTP paths.</p>
+<p><strong>API</strong></p>
+<div class="line-block">
+<div class="line">A BIG-IQ device provides a subset of the BIG-IP functionality, plus functionality that is specific to BIG-IQ.</div>
+<div class="line">For example you can list the self IPs in both BIG-IQ and BIG-IP using the following tmsh command:</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tmsh</span> <span class="nb">list</span> <span class="n">net</span> <span class="bp">self</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">This means that the majority of the HTTP path you use in the BIG-IP API for the device itself will also work with BIG-IQ.</div>
+<div class="line">Those HTTP paths will start with <strong>/mgmt/tm/</strong>.</div>
+</div>
+<p>HTTP paths to work BIG-IQ functionalities start with <strong>/mgmt/cm/</strong>.</p>
+<p>HTTP paths for functionality that is specific to the iControl REST API starts with <strong>/mgmt/shared/</strong></p>
+<div class="line-block">
+<div class="line">The API is similar to tmsh commands.</div>
+<div class="line">However, BIG-IQ only has tmsh commands that are specific to the BIG-IQ itself.</div>
+<div class="line">If you want list all virtual servers using the API, you do:</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">hostname</span> <span class="ow">or</span> <span class="n">IP</span><span class="o">&gt;/</span><span class="n">mgmt</span><span class="o">/</span><span class="n">cm</span><span class="o">/</span><span class="n">adc</span><span class="o">-</span><span class="n">core</span><span class="o">/</span><span class="n">working</span><span class="o">-</span><span class="n">config</span><span class="o">/</span><span class="n">ltm</span><span class="o">/</span><span class="n">virtual</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">BIG-IQ is a very new products compated with BIG-IP, however, it had many major changes since it was created.</div>
+<div class="line">The adc-core name is the same as LTM, and I assume it is a legacy from the time BIG-IQ had separated products.</div>
+</div>
+<div class="line-block">
+<div class="line">Instead of using the object name as the key to get that object, BIG-IQ API uses IDs.</div>
+<div class="line">If you want to list a single virtual server using the API you do:</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">hostname</span> <span class="ow">or</span> <span class="n">IP</span><span class="o">&gt;/</span><span class="n">mgmt</span><span class="o">/</span><span class="n">tm</span><span class="o">/</span><span class="n">ltm</span><span class="o">/</span><span class="n">virtual</span><span class="o">/&lt;</span><span class="n">ID</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">This means you need to know the ID, or you have to get the ID before.</div>
+<div class="line">The SDK has a function called “id” to help with that.</div>
+</div>
+<div class="line-block">
+<div class="line">BIG-IQ API also requires you to provide a link to a object in some cases.</div>
+<div class="line">For example, if you create a virtual server, you have to provide a link device.</div>
+<div class="line">The link is sent as part of the payload, and means the virtual server will be linked to that device.</div>
+<div class="line">The SDK has a function called “link” to help with that.</div>
+</div>
+<p><strong>Documentation</strong></p>
+<div class="line-block">
+<div class="line">F5 site:</div>
+<div class="line"><a class="reference external" href="https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/">https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/</a></div>
+</div>
+<div class="line-block">
+<div class="line">BIG-IQ API does not have a user guide like BIG-IP, but the API Reference provides similar content.</div>
+<div class="line"><a class="reference external" href="https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html">https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html</a></div>
+</div>
+<div class="line-block">
+<div class="line">This part of the documentation provides many examples:</div>
+<div class="line"><a class="reference external" href="https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/HowToSamples/bigiq_public_api_wf/t_bigiq_public_api_workflows.html">https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/HowToSamples/bigiq_public_api_wf/t_bigiq_public_api_workflows.html</a></div>
+</div>
+<div class="line-block">
+<div class="line">List of HTTP paths for <strong>/mgmt/tm</strong> in 7.1.0:</div>
+<div class="line"><a class="reference external" href="https://raw.githubusercontent.com/leonardobdes/BIGREST/master/api/bigiq_mgmt_tm_15_1_0.txt">https://raw.githubusercontent.com/leonardobdes/BIGREST/master/api/bigiq_mgmt_tm_15_1_0.txt</a></div>
+<div class="line">BIG-IQ does not display the full list, so use BIG-IP list below as reference:</div>
+<div class="line"><a class="reference external" href="https://raw.githubusercontent.com/leonardobdes/BIGREST/master/api/bigip_mgmt_tm_15_1_0.txt">https://raw.githubusercontent.com/leonardobdes/BIGREST/master/api/bigip_mgmt_tm_15_1_0.txt</a></div>
+</div>
+<div class="line-block">
+<div class="line">Full list of HTTP paths for <strong>/mgmt/cm</strong> in 7.1.0:</div>
+<div class="line"><a class="reference external" href="https://raw.githubusercontent.com/leonardobdes/BIGREST/master/api/bigiq_mgmt_cm_15_1_0.txt">https://raw.githubusercontent.com/leonardobdes/BIGREST/master/api/bigiq_mgmt_cm_15_1_0.txt</a></div>
+</div>
+<div class="line-block">
+<div class="line">Full list of HTTP paths for <strong>/mgmt/shared</strong> in 7.1.0:</div>
+<div class="line"><a class="reference external" href="https://raw.githubusercontent.com/leonardobdes/BIGREST/master/api/bigiq_mgmt_shared_15_1_0.txt">https://raw.githubusercontent.com/leonardobdes/BIGREST/master/api/bigiq_mgmt_shared_15_1_0.txt</a></div>
 </div>
 </div>
 </div>
@@ -227,7 +348,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="BIG.html" class="btn btn-neutral float-right" title="BIG" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="utils.html" class="btn btn-neutral float-right" title="Utils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

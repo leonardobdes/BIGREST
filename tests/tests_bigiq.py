@@ -205,7 +205,10 @@ else:
 
 # Show virtual server information
 virtual = device.show(
-    f"/mgmt/cm/adc-core/working-config/ltm/virtual/{virtual_id}")[0]
+    f"/mgmt/cm/adc-core/working-config/ltm/virtual/{virtual_id}")
+print(virtual)
+virtual = virtual[0]
+print(virtual)
 virtual_availability = virtual.properties[
     "status.availabilityState"]["description"]
 if virtual_availability != "unknown":

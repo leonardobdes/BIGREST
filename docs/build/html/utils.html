@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Utils &mdash; BIGREST 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="BIG" href="BIG.html" />
+    <link rel="prev" title="BIG-IP API vs BIG-IQ API" href="bigip_bigiq.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> BIGREST
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_bigiq.html">BIG-IP API vs BIG-IQ API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Utils</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#rest-format">rest_format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#code">Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#explanation">Explanation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#token">token</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Explanation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#refresh-token">refresh_token</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Explanation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">BIG-IP:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="BIG.html">BIG</a></li>
+</ul>
+<p class="caption"><span class="caption-text">BIG-IQ:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="BIG.html">BIG</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BIGREST</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Utils</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/utils.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="utils">
+<h1>Utils<a class="headerlink" href="#utils" title="Permalink to this headline">¶</a></h1>
+<div class="line-block">
+<div class="line">BIGREST has a Python module called utils that has multiple usefull functions.</div>
+<div class="line">Use these functions to help you working with iControl REST API.</div>
+</div>
+<div class="section" id="rest-format">
+<h2>rest_format<a class="headerlink" href="#rest-format" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="code">
+<h3>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h3>
+<dl class="py function">
+<dt id="bigrest.utils.utils.rest_format">
+<code class="sig-prename descclassname">bigrest.utils.utils.</code><code class="sig-name descname">rest_format</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">text</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#bigrest.utils.utils.rest_format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a string to be compatible with iControl REST API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>text</strong> – String to be convereted.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;/mgmt/tm/ltm/pool/</span><span class="si">{</span><span class="n">rest_format</span><span class="p">(</span><span class="s2">&quot;/bigrest/bigrest_pool&quot;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="sa">f</span><span class="s2">&quot;/members/</span><span class="si">{</span><span class="n">rest_format</span><span class="p">(</span><span class="s2">&quot;/bigrest/172.17.0.1%1:80&quot;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">)</span>
+<span class="n">device</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="explanation">
+<h3>Explanation<a class="headerlink" href="#explanation" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">iControl REST API requires “/” to be converted to “~”.</div>
+<div class="line">Also requires “%” (used for route domains) to be converted to “%25”.</div>
+</div>
+</div>
+</div>
+<div class="section" id="token">
+<h2>token<a class="headerlink" href="#token" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Code<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<dl class="py function">
+<dt id="bigrest.utils.utils.token">
+<code class="sig-prename descclassname">bigrest.utils.utils.</code><code class="sig-name descname">token</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">username</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">password</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">login_provider</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'tmos'</span></em>, <em class="sig-param"><span class="n">debug</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#bigrest.utils.utils.token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a token from the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device</strong> – Name or IP of the device to send the REST requests.</p></li>
+<li><p><strong>username</strong> – Username used to login to the device.</p></li>
+<li><p><strong>password</strong> – Password used to login to the device.</p></li>
+<li><p><strong>login_provider</strong> – Login provider used to authenticate the user.</p></li>
+<li><p><strong>debug</strong> – Debug file name to be used to output the debug information.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Exceptions:</dt><dd><p>InvalidOptionError: Raised when invalid options are used as arguments.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="id2">
+<h3>Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">token_</span> <span class="o">=</span> <span class="n">token</span><span class="p">(</span><span class="s2">&quot;192.168.255.1&quot;</span><span class="p">,</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>Explanation<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">This function is mainly used to test the BIGREST itself.</div>
+<div class="line">However, you can use to generate a token, that can be used in other tools.</div>
+<div class="line">If you just working with BIGREST, either BIGIP or BIGIQ classes, it can use token internally if you enable token use.</div>
+</div>
+<div class="line-block">
+<div class="line">If you pass the debug keyword with filename, when iControl REST API returns an error, BIGREST will create the file with debug information.</div>
+<div class="line">The information will include the full request sent to the device, and the full response received from the device.</div>
+</div>
+</div>
+</div>
+<div class="section" id="refresh-token">
+<h2>refresh_token<a class="headerlink" href="#refresh-token" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>Code<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<dl class="py function">
+<dt id="bigrest.utils.utils.refresh_token">
+<code class="sig-prename descclassname">bigrest.utils.utils.</code><code class="sig-name descname">refresh_token</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">device</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">username</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">password</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">login_provider</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'tmos'</span></em>, <em class="sig-param"><span class="n">debug</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#bigrest.utils.utils.refresh_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a refresh token from the device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device</strong> – Name or IP of the device to send the REST requests.</p></li>
+<li><p><strong>username</strong> – Username used to login to the device.</p></li>
+<li><p><strong>password</strong> – Password used to login to the device.</p></li>
+<li><p><strong>login_provider</strong> – Login provider used to authenticate the user.</p></li>
+<li><p><strong>debug</strong> – Debug file name to be used to output the debug information.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Exceptions:</dt><dd><p>InvalidOptionError: Raised when invalid options are used as arguments.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="id5">
+<h3>Example<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">refresh_token_</span> <span class="o">=</span> <span class="n">refresh_token</span><span class="p">(</span><span class="s2">&quot;192.168.255.1&quot;</span><span class="p">,</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>Explanation<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">This function is mainly used to test the BIGREST itself, and only works with BIG-IQ (BIG-IP does not implement refresh token).</div>
+<div class="line">However, you can use to generate a refresh token, that can be used in other tools.</div>
+<div class="line">If you just working with BIGREST, BIGIQ class only, it can use refresh token internally if you provide a refresh token.</div>
+</div>
+<div class="line-block">
+<div class="line">If you pass the debug keyword with filename, when iControl REST API returns an error, BIGREST will create the file with debug information.</div>
+<div class="line">The information will include the full request sent to the device, and the full response received from the device.</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="BIG.html" class="btn btn-neutral float-right" title="BIG" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="bigip_bigiq.html" class="btn btn-neutral float-left" title="BIG-IP API vs BIG-IQ API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020, Leonardo Souza
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

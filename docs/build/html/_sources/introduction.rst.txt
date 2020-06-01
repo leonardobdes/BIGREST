@@ -77,9 +77,9 @@ How to use?
 
 .. code-block:: python
 
-   virtuals = device.load("/mgmt/tm/ltm/virtual")
-   for virtual in virtuals:
-       print(virtual.properties["name"])
+    virtuals = device.load("/mgmt/tm/ltm/virtual")
+    for virtual in virtuals:
+        print(virtual.properties["name"])
 
 | This is just a simple example, to give a first view about the SDK.
 | Detailed information about how to use the SDK will be provide in the next sections of this documentation.
