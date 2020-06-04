@@ -6,8 +6,6 @@ Creates a file with API path list.
 # Import only with "import package",
 # it will make explicity in the code where it came from.
 import getpass
-import os
-import hashlib
 
 # Internal imports
 # Import only with "from x import y", to simplify the code.

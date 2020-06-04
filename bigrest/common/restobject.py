@@ -10,7 +10,7 @@ import json
 
 class RESTObject():
     """
-    Represents a object created from a response to iControl REST API.
+    Represents a object created from a response of the iControl REST API.
 
     Parameters:
         properties: Represents the properties of the object.

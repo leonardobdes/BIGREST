@@ -13,8 +13,8 @@ import hashlib
 # Internal imports
 # Import only with "from x import y", to simplify the code.
 from ..bigrest.bigiq import BIGIQ
-from ..bigrest.utils.utils import rest_format
 from ..bigrest.utils.utils import token
+from ..bigrest.utils.utils import refresh_token
 
 # Get username, password, and ip
 print("Username: ", end="")
@@ -205,10 +205,7 @@ else:
 
 # Show virtual server information
 virtual = device.show(
-    f"/mgmt/cm/adc-core/working-config/ltm/virtual/{virtual_id}")
-print(virtual)
-virtual = virtual[0]
-print(virtual)
+    f"/mgmt/cm/adc-core/working-config/ltm/virtual/{virtual_id}")[0]
 virtual_availability = virtual.properties[
     "status.availabilityState"]["description"]
 if virtual_availability != "unknown":
@@ -236,7 +233,7 @@ with open(filename, "rb") as file_:
     file_hash = hashlib.md5()
     file_hash.update(file_.read())
     md5_original = file_hash.hexdigest()
-device.upload("/mgmt/shared/file-transfer/uploads/", filename=filename)
+device.upload("/mgmt/shared/file-transfer/uploads", filename=filename)
 os.remove(filename)
 data = {}
 data["command"] = "run"
@@ -296,3 +293,24 @@ data["command"] = "run"
 data["utilCmdArgs"] = "/var/config/rest/downloads/bigrest.iso"
 result = device.command("/mgmt/tm/util/unix-rm", data)
 print(f"Remote file {filename} deleted.")
+
+# Remove configuration
+data = {
+   "name": "BIGREST remove config to device",
+   "deviceReferences": [
+        {
+            "link": device_link
+        },
+        {
+            "link": device_link2
+        }
+   ],
+   "disableUnusedObjectRemoval": True
+}
+task = device.task_start(
+    "/mgmt/cm/adc-core/tasks/deploy-configuration", data)
+device.task_wait(task)
+if device.task_completed(task):
+    print("Task test completed.")
+else:
+    raise Exception()

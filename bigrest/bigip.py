@@ -17,14 +17,14 @@ from .common.restobject import RESTObject
 
 class BIGIP(BIG):
     """
-    Defines methods to call the REST API that can be used by BIG-IP.
+    Defines methods to call the iControl REST API that can be used by BIG-IP.
 
     Arguments:
-        device: Name or IP of the device to send the REST requests.
+        device: Name or IP of the device to send the HTTP requests.
         username: Username used to login to the device.
         password: Password used to login to the device.
         login_provider: Login provider used to authenticate the user.
-        request_token: Indicates if token should be requested from the
+        request_token: Indicates if token a should be requested from the
             device and used for HTTP requests.
         token: Token to be used to send HTTP requests to the device.
         debug: Debug file name to be used to output the debug information.
@@ -53,7 +53,7 @@ class BIGIP(BIG):
             data: Payload that will be sent to the device.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         if self.request_token or self.refresh_token is not None:
@@ -82,7 +82,7 @@ class BIGIP(BIG):
             interval: The interval the queries will be made.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         if self.request_token or self.refresh_token is not None:
@@ -113,7 +113,7 @@ class BIGIP(BIG):
             obj: Object that represents the task.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         if self.request_token or self.refresh_token is not None:
@@ -141,7 +141,7 @@ class BIGIP(BIG):
             obj: Object that represents the task.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         if self.request_token or self.refresh_token is not None:
@@ -167,7 +167,7 @@ class BIGIP(BIG):
             path: HTTP path used in the HTTP request sent to the device.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         if self.request_token or self.refresh_token is not None:
@@ -187,7 +187,7 @@ class BIGIP(BIG):
         Sends an HTTP POST request to the iControl REST API.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         if self.request_token or self.refresh_token is not None:
@@ -217,7 +217,7 @@ class BIGIP(BIG):
         Sends an HTTP PATCH request to the iControl REST API.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         if self.request_token or self.refresh_token is not None:
@@ -247,7 +247,7 @@ class BIGIP(BIG):
         Sends an HTTP PATCH request to the iControl REST API.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         if self.request_token or self.refresh_token is not None:

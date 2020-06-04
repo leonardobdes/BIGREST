@@ -20,7 +20,7 @@ def rest_format(text: str) -> str:
     Converts a string to be compatible with iControl REST API.
 
     Arguments:
-        text: String to be convereted.
+        text: String to be converted.
 
     """
 

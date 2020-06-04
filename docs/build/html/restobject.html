@@ -83,6 +83,7 @@
               <p class="caption"><span class="caption-text">Introduction</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="known_issues.html">F5 Known Issues</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bigip_bigiq.html">BIG-IP API vs BIG-IQ API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils.html">Utils</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">RESTObject</a><ul>
@@ -95,6 +96,49 @@
 <p class="caption"><span class="caption-text">BIG-IP</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="bigip.html">BIGIP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_load.html">load</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_save.html">save</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_delete.html">delete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_create.html">create</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_modify.html">modify</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_show.html">show</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_command.html">command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_download.html">download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_upload.html">upload</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_example.html">Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_exist.html">exist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_task_start.html">task_start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_task_wait.html">task_wait</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_task_completed.html">task_completed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_task_result.html">task_result</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_transaction_create.html">transaction_create</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_transaction_commit.html">transaction_commit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_transaction_validate.html">transaction_validate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_transaction_with.html">Transaction with “with”</a></li>
+</ul>
+<p class="caption"><span class="caption-text">BIG-IQ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bigiq.html">BIGIQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_link.html">link</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_id.html">id</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_load.html">load</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_save.html">save</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_delete.html">delete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_create.html">create</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_modify.html">modify</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_show.html">show</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_command.html">command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_download.html">download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_upload.html">upload</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_example.html">example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_exist.html">exist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_task_start.html">task_start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_task_wait.html">task_wait</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_task_completed.html">task_completed</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
 
             
@@ -166,7 +210,7 @@
 <dl class="py class">
 <dt id="bigrest.common.restobject.RESTObject">
 <em class="property">class </em><code class="sig-prename descclassname">bigrest.common.restobject.</code><code class="sig-name descname">RESTObject</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">properties</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span><a class="headerlink" href="#bigrest.common.restobject.RESTObject" title="Permalink to this definition">¶</a></dt>
-<dd><p>Represents a object created from a response to iControl REST API.</p>
+<dd><p>Represents a object created from a response of the iControl REST API.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>properties</strong> – Represents the properties of the object.</p>
@@ -187,13 +231,13 @@
 <div class="section" id="explanation">
 <h2>Explanation<a class="headerlink" href="#explanation" title="Permalink to this headline">¶</a></h2>
 <div class="line-block">
-<div class="line">BIGREST creates a RESTObject object with the response of a HTTP request sent to the iControl REST API.</div>
-<div class="line">You can query the properties of the oject using the properties atribute that is a Python dictionary.</div>
+<div class="line">BIGREST creates a RESTObject object with the response of an HTTP request sent to the iControl REST API.</div>
+<div class="line">You can query the properties of the object using the properties attribute that is a Python dictionary.</div>
 </div>
 <div class="line-block">
-<div class="line">In the example above, the first print will print just the name of virtual server.</div>
-<div class="line">Next print, will print the RESTObject object itself.</div>
-<div class="line">The object has a function to deal with the print function, so it will print the properties in a JSON format.</div>
+<div class="line">In the example above, the first print will print just the name of the virtual server.</div>
+<div class="line">The next print will print the RESTObject.</div>
+<div class="line">The RESTObject has a method to deal with the print function, so it will print the properties in a JSON format.</div>
 </div>
 </div>
 </div>

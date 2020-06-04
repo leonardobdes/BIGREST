@@ -5,13 +5,16 @@ What is BIGREST?
 ----------------
 
 | F5 BIG-IP and BIG-IQ devices have an API called iControl REST.
-| BIGREST is a SDK with multiple methods and functions that simplifies the use of the iControl REST API.
+| BIGREST is an SDK with multiple methods and functions that simplifies the use of the iControl REST API.
 
 BIGREST functionalities
 -----------------------
 
 - Supports partition
 - Supports route domain
+- Support HTTP basic authentication
+- Support token
+- Support refresh token
 - Implements all HTTP methods used in the iControl REST API
 - Implements HTTP path /stats
 - Implements HTTP path /example
@@ -32,10 +35,10 @@ https://github.com/leonardobdes/BIGREST
 Author
 ------
 
-| **Name:** 
+| **Name:**
 | Leonardo Souza
 
-| **LinkedIn:** 
+| **LinkedIn:**
 | https://uk.linkedin.com/in/leonardobdes
 
 How to install?
@@ -43,13 +46,13 @@ How to install?
 
 **Requires Python version 3.7**
 
-Install BIGREST using Python **pip**
+Install BIGREST using Python **pip**:
 
 .. code-block:: python
 
    pip install bigrest
 
-How to use?
+How to use it?
 ---------------
 
 **In the following example:**
@@ -81,13 +84,13 @@ How to use?
     for virtual in virtuals:
         print(virtual.properties["name"])
 
-| This is just a simple example, to give a first view about the SDK.
-| Detailed information about how to use the SDK will be provide in the next sections of this documentation.
+| This is just a simple example to give you a first view about the SDK.
+| Detailed information about how to use the SDK will be provided in the next sections of this documentation.
 
 How to get help?
 ----------------
 
-If you have problems to use this SDK, or to understand how the F5 iControl REST API works, use `DevCentral <https://devcentral.f5.com/>`_ website to get help.
+If you have problems using this SDK, or to understand how the F5 iControl REST API works, use `DevCentral <https://devcentral.f5.com/>`_ website to get help.
 
 How to report bugs?
 -------------------
@@ -95,7 +98,7 @@ How to report bugs?
 | Use `GitHub <https://github.com/leonardobdes/BIGREST/issues>`_ issues to report bugs.
 | For any bug, please provide the following information.
 
-**BIGREST version:**
+BIGREST version:**
 
 Run the following command to find the version you are using.
 
@@ -117,7 +120,7 @@ Run the following command to find the version you are using.
 
 **Python code to replicate the bug.**
 
-**Output generated when bug is triggered.**
+**Output generated when the bug is triggered.**
 
 How to request new functionalities?
 -----------------------------------

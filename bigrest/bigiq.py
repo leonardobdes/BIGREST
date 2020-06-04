@@ -16,14 +16,14 @@ from .common.restobject import RESTObject
 
 class BIGIQ(BIG):
     """
-    Defines methods to call the REST API that can be used by BIG-IQ.
+    Defines methods to call the iControl REST API that can be used by BIG-IQ.
 
     Arguments:
-        device: Name or IP of the device to send the REST requests.
+        device: Name or IP of the device to send the HTTP requests.
         username: Username used to login to the device.
         password: Password used to login to the device.
         login_provider: Login provider used to authenticate the user.
-        request_token: Indicates if token should be requested from the
+        request_token: Indicates if a token should be requested from the
             device and used for HTTP requests.
         token: Token to be used to send HTTP requests to the device.
         refresh_token: Refresh token to be used to request new token,
@@ -45,7 +45,7 @@ class BIGIQ(BIG):
             data: Payload that will be sent to the device.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         if self.request_token or self.refresh_token is not None:
@@ -67,7 +67,7 @@ class BIGIQ(BIG):
             interval: The interval the queries will be made.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         if self.request_token or self.refresh_token is not None:
@@ -98,7 +98,7 @@ class BIGIQ(BIG):
             obj: Object that represents the task.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         if self.request_token or self.refresh_token is not None:
@@ -126,7 +126,7 @@ class BIGIQ(BIG):
             path: HTTP path used in the HTTP request sent to the device.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         if self.request_token or self.refresh_token is not None:
@@ -143,7 +143,7 @@ class BIGIQ(BIG):
 
     def link(self, path: str) -> str:
         """
-        Get the link of the object.
+        Get the link for the object.
 
         Sends an HTTP GET request to the iControl REST API.
 
@@ -151,7 +151,7 @@ class BIGIQ(BIG):
             path: HTTP path used in the HTTP request sent to the device.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         obj = self.load(path)[0]
@@ -167,7 +167,7 @@ class BIGIQ(BIG):
             path: HTTP path used in the HTTP request sent to the device.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         obj = self.load(path)[0]

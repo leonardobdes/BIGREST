@@ -27,14 +27,15 @@ urllib3.disable_warnings()
 
 class BIG:
     """
-    Defines methods to call the REST API that can be used by BIG-IP or BIG-IQ.
+    Defines methods to call the iControl REST API that can be used
+    by BIG-IP or BIG-IQ.
 
     Arguments:
-        device: Name or IP of the device to send the REST requests.
+        device: Name or IP of the device to send the HTTP requests.
         username: Username used to login to the device.
         password: Password used to login to the device.
         login_provider: Login provider used to authenticate the user.
-        request_token: Indicates if token should be requested from the
+        request_token: Indicates if a token should be requested from the
             device and used for HTTP requests.
         token: Token to be used to send HTTP requests to the device.
         refresh_token: Refresh token to be used to request new token,
@@ -98,7 +99,7 @@ class BIG:
             path: HTTP path used in the HTTP request sent to the device.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         if self.request_token or self.refresh_token is not None:
@@ -126,7 +127,7 @@ class BIG:
             path: HTTP path used in the HTTP request sent to the device.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         if self.request_token or self.refresh_token is not None:
@@ -140,7 +141,7 @@ class BIG:
 
     def delete(self, path: str) -> None:
         """
-        Deletes the object in the device.
+        Deletes the object on the device.
 
         Sends an HTTP DELETE request to the iControl REST API.
 
@@ -148,7 +149,7 @@ class BIG:
             path: HTTP path used in the HTTP request sent to the device.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         if self.request_token or self.refresh_token is not None:
@@ -160,7 +161,7 @@ class BIG:
 
     def create(self, path: str, data: dict) -> RESTObject:
         """
-        Creates the object in the device.
+        Creates the object on the device.
 
         Sends an HTTP POST request to the iControl REST API.
 
@@ -169,7 +170,7 @@ class BIG:
             data: Payload that will be sent to the device.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         if self.request_token or self.refresh_token is not None:
@@ -182,7 +183,7 @@ class BIG:
 
     def modify(self, path: str, data: dict) -> RESTObject:
         """
-        Modifies the object in the device.
+        Modifies the object on the device.
 
         Sends an HTTP PATCH request to the iControl REST API.
 
@@ -191,7 +192,7 @@ class BIG:
             data: Payload that will be sent to the device.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         if self.request_token or self.refresh_token is not None:
@@ -214,7 +215,7 @@ class BIG:
             path: HTTP path used in the HTTP request sent to the device.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         if self.request_token or self.refresh_token is not None:
@@ -231,7 +232,8 @@ class BIG:
             for obj_name in entries:
                 if "nestedStats" in entries[obj_name]:
                     objects.append(
-                        RESTObject(entries[obj_name]["nestedStats"]["entries"]))
+                        RESTObject(
+                            entries[obj_name]["nestedStats"]["entries"]))
                 else:
                     objects.append(RESTObject(entries))
         else:
@@ -249,7 +251,7 @@ class BIG:
             data: Payload that will be sent to the device.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         obj = self.create(path, data)
@@ -269,7 +271,7 @@ class BIG:
             filename: Name of the file to be downloaded.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         # Content-Range: <range-start>-<range-end>/<size>
@@ -319,7 +321,7 @@ class BIG:
             filename: Name of the file to be uploaded.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         # Content-Range: <range-start>-<range-end>/<size>
@@ -368,7 +370,7 @@ class BIG:
             path: HTTP path used in the HTTP request sent to the device.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         if self.request_token or self.refresh_token is not None:
@@ -415,7 +417,7 @@ class BIG:
         Sends an HTTP POST request to the iControl REST API.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         if "X-F5-Auth-Token" in self.session.headers:
@@ -466,7 +468,7 @@ class BIG:
             to the iControl REST API.
 
         Exceptions:
-            RESTAPIError: Raised when iControl REST API retruns an error.
+            RESTAPIError: Raised when iControl REST API returns an error.
         """
 
         if self.request_token or self.refresh_token is not None:

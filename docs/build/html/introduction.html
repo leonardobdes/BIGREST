@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="BIG-IP API vs BIG-IQ API" href="bigip_bigiq.html" />
+    <link rel="next" title="F5 Known Issues" href="known_issues.html" />
     <link rel="prev" title="BIGREST - A Python SDK for F5 iControl REST API" href="index.html" /> 
 </head>
 
@@ -80,7 +80,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Introduction:</span></p>
+              <p class="caption"><span class="caption-text">Introduction</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#what-is-bigrest">What is BIGREST?</a></li>
@@ -89,15 +89,63 @@
 <li class="toctree-l2"><a class="reference internal" href="#source-code">Source code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#author">Author</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-install">How to install?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#how-to-use">How to use?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-use-it">How to use it?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-get-help">How to get help?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-report-bugs">How to report bugs?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-request-new-functionalities">How to request new functionalities?</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="known_issues.html">F5 Known Issues</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bigip_bigiq.html">BIG-IP API vs BIG-IQ API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utils.html">Utils</a></li>
 <li class="toctree-l1"><a class="reference internal" href="restobject.html">RESTObject</a></li>
+</ul>
+<p class="caption"><span class="caption-text">BIG-IP</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bigip.html">BIGIP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_load.html">load</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_save.html">save</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_delete.html">delete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_create.html">create</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_modify.html">modify</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_show.html">show</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_command.html">command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_download.html">download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_upload.html">upload</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_example.html">Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_exist.html">exist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_task_start.html">task_start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_task_wait.html">task_wait</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_task_completed.html">task_completed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_task_result.html">task_result</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_transaction_create.html">transaction_create</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_transaction_commit.html">transaction_commit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_transaction_validate.html">transaction_validate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigip_transaction_with.html">Transaction with “with”</a></li>
+</ul>
+<p class="caption"><span class="caption-text">BIG-IQ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bigiq.html">BIGIQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_link.html">link</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_id.html">id</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_load.html">load</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_save.html">save</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_delete.html">delete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_create.html">create</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_modify.html">modify</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_show.html">show</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_command.html">command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_download.html">download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_upload.html">upload</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_example.html">example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_exist.html">exist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_task_start.html">task_start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_task_wait.html">task_wait</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bigiq_task_completed.html">task_completed</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
 
             
@@ -168,7 +216,7 @@
 <h2>What is BIGREST?<a class="headerlink" href="#what-is-bigrest" title="Permalink to this headline">¶</a></h2>
 <div class="line-block">
 <div class="line">F5 BIG-IP and BIG-IQ devices have an API called iControl REST.</div>
-<div class="line">BIGREST is a SDK with multiple methods and functions that simplifies the use of the iControl REST API.</div>
+<div class="line">BIGREST is an SDK with multiple methods and functions that simplifies the use of the iControl REST API.</div>
 </div>
 </div>
 <div class="section" id="bigrest-functionalities">
@@ -176,6 +224,9 @@
 <ul class="simple">
 <li><p>Supports partition</p></li>
 <li><p>Supports route domain</p></li>
+<li><p>Support HTTP basic authentication</p></li>
+<li><p>Support token</p></li>
+<li><p>Support refresh token</p></li>
 <li><p>Implements all HTTP methods used in the iControl REST API</p></li>
 <li><p>Implements HTTP path /stats</p></li>
 <li><p>Implements HTTP path /example</p></li>
@@ -206,13 +257,13 @@
 <div class="section" id="how-to-install">
 <h2>How to install?<a class="headerlink" href="#how-to-install" title="Permalink to this headline">¶</a></h2>
 <p><strong>Requires Python version 3.7</strong></p>
-<p>Install BIGREST using Python <strong>pip</strong></p>
+<p>Install BIGREST using Python <strong>pip</strong>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">bigrest</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="how-to-use">
-<h2>How to use?<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-to-use-it">
+<h2>How to use it?<a class="headerlink" href="#how-to-use-it" title="Permalink to this headline">¶</a></h2>
 <p><strong>In the following example:</strong></p>
 <dl class="field-list simple">
 <dt class="field-odd">192.168.1.245</dt>
@@ -240,13 +291,13 @@
 </pre></div>
 </div>
 <div class="line-block">
-<div class="line">This is just a simple example, to give a first view about the SDK.</div>
-<div class="line">Detailed information about how to use the SDK will be provide in the next sections of this documentation.</div>
+<div class="line">This is just a simple example to give you a first view about the SDK.</div>
+<div class="line">Detailed information about how to use the SDK will be provided in the next sections of this documentation.</div>
 </div>
 </div>
 <div class="section" id="how-to-get-help">
 <h2>How to get help?<a class="headerlink" href="#how-to-get-help" title="Permalink to this headline">¶</a></h2>
-<p>If you have problems to use this SDK, or to understand how the F5 iControl REST API works, use <a class="reference external" href="https://devcentral.f5.com/">DevCentral</a> website to get help.</p>
+<p>If you have problems using this SDK, or to understand how the F5 iControl REST API works, use <a class="reference external" href="https://devcentral.f5.com/">DevCentral</a> website to get help.</p>
 </div>
 <div class="section" id="how-to-report-bugs">
 <h2>How to report bugs?<a class="headerlink" href="#how-to-report-bugs" title="Permalink to this headline">¶</a></h2>
@@ -254,7 +305,7 @@
 <div class="line">Use <a class="reference external" href="https://github.com/leonardobdes/BIGREST/issues">GitHub</a> issues to report bugs.</div>
 <div class="line">For any bug, please provide the following information.</div>
 </div>
-<p><strong>BIGREST version:</strong></p>
+<p>BIGREST version:**</p>
 <p>Run the following command to find the version you are using.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">show</span> <span class="n">bigrest</span>
 </pre></div>
@@ -267,7 +318,7 @@
 </pre></div>
 </div>
 <p><strong>Python code to replicate the bug.</strong></p>
-<p><strong>Output generated when bug is triggered.</strong></p>
+<p><strong>Output generated when the bug is triggered.</strong></p>
 </div>
 <div class="section" id="how-to-request-new-functionalities">
 <h2>How to request new functionalities?<a class="headerlink" href="#how-to-request-new-functionalities" title="Permalink to this headline">¶</a></h2>
@@ -286,7 +337,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="bigip_bigiq.html" class="btn btn-neutral float-right" title="BIG-IP API vs BIG-IQ API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="known_issues.html" class="btn btn-neutral float-right" title="F5 Known Issues" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="BIGREST - A Python SDK for F5 iControl REST API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

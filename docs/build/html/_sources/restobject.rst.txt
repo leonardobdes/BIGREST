@@ -19,9 +19,9 @@ Example
 Explanation
 -----------
 
-| BIGREST creates a RESTObject object with the response of a HTTP request sent to the iControl REST API.
-| You can query the properties of the oject using the properties atribute that is a Python dictionary.
+| BIGREST creates a RESTObject object with the response of an HTTP request sent to the iControl REST API.
+| You can query the properties of the object using the properties attribute that is a Python dictionary.
 
-| In the example above, the first print will print just the name of virtual server.
-| Next print, will print the RESTObject object itself.
-| The object has a function to deal with the print function, so it will print the properties in a JSON format.
+| In the example above, the first print will print just the name of the virtual server.
+| The next print will print the RESTObject.
+| The RESTObject has a method to deal with the print function, so it will print the properties in a JSON format.
