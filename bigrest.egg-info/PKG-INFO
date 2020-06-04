@@ -1,0 +1,139 @@
+Metadata-Version: 2.1
+Name: bigrest
+Version: 1.0.0
+Summary: A Python SDK for F5 iControl REST API
+Home-page: https://github.com/leonardobdes/BIGREST
+Author: Leonardo Souza
+License: UNKNOWN
+Description: What is BIGREST?
+        ----------------
+        
+        | F5 BIG-IP and BIG-IQ devices have an API called iControl REST.
+        | BIGREST is an SDK with multiple methods and functions that simplifies the use of the iControl REST API.
+        
+        BIGREST functionalities
+        -----------------------
+        
+        - Supports partition
+        - Supports route domain
+        - Support HTTP basic authentication
+        - Support token
+        - Support refresh token
+        - Implements all HTTP methods used in the iControl REST API
+        - Implements HTTP path /stats
+        - Implements HTTP path /example
+        - Implements command
+        - Implements task
+        - Implements transaction
+        
+        Documentation
+        -------------
+        
+        https://bigrest.readthedocs.io/
+        
+        Source code
+        -------------
+        
+        https://github.com/leonardobdes/BIGREST
+        
+        Author
+        ------
+        
+        | **Name:**
+        | Leonardo Souza
+        
+        | **LinkedIn:**
+        | https://uk.linkedin.com/in/leonardobdes
+        
+        How to install?
+        ---------------
+        
+        **Requires Python version 3.7**
+        
+        Install BIGREST using Python **pip**:
+        
+        .. code-block:: python
+        
+           pip install bigrest
+        
+        How to use it?
+        ---------------
+        
+        **In the following example:**
+        
+        :192.168.1.245:
+            IP or name of the F5 device.
+        :admin:
+            Username to be used to connect to the device.
+        :password:
+            Password to be used to connect to the device.
+        
+        **First, import the SDK:**
+        
+        .. code-block:: python
+        
+           from bigrest import BIGIP
+        
+        **Next, create a device object:**
+        
+        .. code-block:: python
+        
+           device = BIGIP("192.168.1.245", "admin", "password")
+        
+        **Lastily, load all virtual servers and print their names:**
+        
+        .. code-block:: python
+        
+            virtuals = device.load("/mgmt/tm/ltm/virtual")
+            for virtual in virtuals:
+                print(virtual.properties["name"])
+        
+        | This is just a simple example to give you a first view about the SDK.
+        | Detailed information about how to use the SDK will be provided in the next sections of this documentation.
+        
+        How to get help?
+        ----------------
+        
+        If you have problems using this SDK, or to understand how the F5 iControl REST API works, use `DevCentral <https://devcentral.f5.com/>`_ website to get help.
+        
+        How to report bugs?
+        -------------------
+        
+        | Use `GitHub <https://github.com/leonardobdes/BIGREST/issues>`_ issues to report bugs.
+        | For any bug, please provide the following information.
+        
+        BIGREST version:**
+        
+        Run the following command to find the version you are using.
+        
+        .. code-block:: python
+        
+           pip show bigrest
+        
+        **F5 device type:**
+        
+        BIG-IP or BIG-IQ
+        
+        **F5 device version:**
+        
+        Run the following command to find the version you are using.
+        
+        .. code-block:: python
+        
+           tmsh show sys version
+        
+        **Python code to replicate the bug.**
+        
+        **Output generated when the bug is triggered.**
+        
+        How to request new functionalities?
+        -----------------------------------
+        
+        | Use `GitHub <https://github.com/leonardobdes/BIGREST/issues>`_ issues to request new functionalities.
+        | Use the following format in the title **RFE - Title**.
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/x-rst

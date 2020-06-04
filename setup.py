@@ -5,17 +5,17 @@ with open("README.rst", "r") as fh:
 
 setuptools.setup(
     name="bigrest",
-    version="1.0.0",
+    version="1.0.1",
     author="Leonardo Souza",
     description="A Python SDK for F5 iControl REST API",
     long_description=long_description,
     long_description_content_type="text/x-rst",
     url="https://github.com/leonardobdes/BIGREST",
-    packages=setuptools.find_packages(),
+    packages=setuptools.find_packages(exclude=("tests",)),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
+    python_requires='>=3.7',
 )
