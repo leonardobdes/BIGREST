@@ -22,7 +22,7 @@ BIGREST functionalities
 Documentation
 -------------
 
-link
+https://bigrest.readthedocs.io/
 
 Source code
 -------------
