@@ -1,17 +1,16 @@
 import setuptools
 
-with open("README.md", "r") as fh:
+with open("README.rst", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="example-pkg-YOUR-USERNAME-HERE", # Replace with your own username
-    version="0.0.1",
-    author="Example Author",
-    author_email="author@example.com",
-    description="A small example package",
+    name="bigrest",
+    version="1.0.0",
+    author="Leonardo Souza",
+    description="A Python SDK for F5 iControl REST API",
     long_description=long_description,
-    long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
+    long_description_content_type="text/x-rst",
+    url="https://github.com/leonardobdes/BIGREST",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
