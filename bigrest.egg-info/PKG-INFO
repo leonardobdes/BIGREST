@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: bigrest
-Version: 1.0.0
+Version: 1.0.1
 Summary: A Python SDK for F5 iControl REST API
 Home-page: https://github.com/leonardobdes/BIGREST
 Author: Leonardo Souza
