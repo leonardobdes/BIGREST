@@ -65,7 +65,7 @@ How to use it?
 
 .. code-block:: python
 
-   from bigrest import BIGIP
+   from bigrest.bigip import BIGIP
 
 **Next, create a device object:**
 

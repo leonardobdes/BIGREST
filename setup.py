@@ -1,11 +1,12 @@
 import setuptools
+from bigrest.version import __version__
 
 with open("README.rst", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="bigrest",
-    version="1.0.1",
+    version=__version__,
     author="Leonardo Souza",
     description="A Python SDK for F5 iControl REST API",
     long_description=long_description,
