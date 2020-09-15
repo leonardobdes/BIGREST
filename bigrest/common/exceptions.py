@@ -26,7 +26,7 @@ class RESTAPIError(Error):
     """
 
     def __init__(self, response: requests.Response,
-                 debug: str) -> RESTAPIError:
+                 debug_file: str) -> RESTAPIError:
         reponse_content_type = response.headers.get("Content-Type")
         try:
             response_json = json.dumps(response.json(), indent=4)
@@ -37,7 +37,7 @@ class RESTAPIError(Error):
             else:
                 response_body = f"\nResponse Body:\n{response.text}"
         response_status = response.status_code
-        if debug is not None:
+        if debug_file is not None:
             request_method = response.request.method
             request_url = response.request.url
             request_headers = response.request.headers
@@ -59,9 +59,9 @@ class RESTAPIError(Error):
                            f"\nRequest body:\n{request_body}"
                            f"\nResponse Status:\n{response_status}"
                            f"\nResponse headers:\n{response_headers}")
-            with open(debug, "w") as file_:
+            with open(debug_file, "w") as file_:
                 file_.write(f"{information}{response_body}")
-                super().__init__(f"Debug information saved in file {debug}.")
+                super().__init__(f"Debug information saved in file {debug_file}.")
         else:
             information = f"\nStatus:\n{response_status}"
             super().__init__(f"{information}{response_body}")

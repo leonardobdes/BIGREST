@@ -2,6 +2,7 @@
 # Import only with "import package",
 # it will make explicity in the code where it came from.
 
+import json
 import requests
 import urllib3
 
@@ -94,3 +95,14 @@ def refresh_token(device: str, username: str, password: str,
     else:
         raise InvalidOptionError(
             "Refresh token only available in a BIG-IQ device.")
+
+
+def debug_request(response):
+    req = f"curl -k -X {response.request.method} {response.request.url}"
+    for k, v in iter(response.request.headers.items()):
+        req += f" -H {k}: {v}"
+    if any(v == 'application/json' for k, v in iter(response.request.headers.items())):
+        if response.request.body:
+            kwargs = json.loads(response.request.body.decode('utf-8'))
+            req += " -d '" + json.dumps(kwargs, sort_keys=True) + "'"
+    return req

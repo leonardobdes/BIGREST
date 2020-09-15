@@ -5,11 +5,11 @@
 # Turns all annotations into string literals.
 # This is one exception to the external import rule.
 from __future__ import annotations
+import pathlib
 import requests
 import time
-import urllib3
-import pathlib
 import urllib
+import urllib3
 
 # Internal Imports
 # Import only with "from x import y", to simplify the code.
@@ -19,6 +19,7 @@ from .common.exceptions import RESTAPIError
 from .common.exceptions import InvalidOptionError
 from .common.constants import TOKEN_EXTRA_TIME
 from .common.constants import REST_API_MAXIMUM_CHUNK_SIZE
+from .utils.utils import debug_request
 from .version import __version__
 
 # Disable urllib3 SSL warnings
@@ -49,7 +50,7 @@ class BIG:
     def __init__(self, device: str, username: str = None,
                  password: str = None, login_provider: str = "tmos",
                  request_token: bool = False, token: str = None,
-                 refresh_token: str = None, debug: str = None) -> BIG:
+                 refresh_token: str = None, **kwargs) -> BIG:
 
         # Input validations
         message = (
@@ -74,8 +75,13 @@ class BIG:
         self.token = token
         self.refresh_token = refresh_token
         self._transaction = None
-        self.debug = debug
         self.session = requests.Session()
+        if 'debug' in kwargs:
+            self.debug = True
+            self.debug_file = kwargs.get('debug')
+        else:
+            self.debug = False
+        self._debug_output = []
 
         # Session settings
         if self.request_token is False:
@@ -88,6 +94,10 @@ class BIG:
 
         # Connect to device
         self._connect()
+
+    @property
+    def debug_output(self):
+        return self._debug_output
 
     def load(self, path: str) -> list[RESTObject]:
         """
@@ -106,8 +116,10 @@ class BIG:
             self._check_token()
         url = self._get_url(path)
         response = self.session.get(url)
-        if response.status_code != 200:
-            raise RESTAPIError(response, self.debug)
+        if self.debug:
+            self._debug_output.append(debug_request(response))
+            if response.status_code != 200:
+                raise RESTAPIError(response, self.debug_file)
         response_json = response.json()
         objects = []
         if "items" in response_json:
@@ -135,8 +147,10 @@ class BIG:
         path = self._get_path(obj)
         url = self._get_url(path)
         response = self.session.put(url, json=obj.asdict())
-        if response.status_code != 200:
-            raise RESTAPIError(response, self.debug)
+        if self.debug:
+            self._debug_output.append(debug_request(response))
+            if response.status_code != 200:
+                raise RESTAPIError(response, self.debug_file)
         return RESTObject(response.json())
 
     def delete(self, path: str) -> None:
@@ -156,8 +170,10 @@ class BIG:
             self._check_token()
         url = self._get_url(path)
         response = self.session.delete(url)
-        if response.status_code != 200:
-            raise RESTAPIError(response, self.debug)
+        if self.debug:
+            self._debug_output.append(debug_request(response))
+            if response.status_code != 200:
+                raise RESTAPIError(response, self.debug_file)
 
     def create(self, path: str, data: dict) -> RESTObject:
         """
@@ -177,8 +193,10 @@ class BIG:
             self._check_token()
         url = self._get_url(path)
         response = self.session.post(url, json=data)
-        if response.status_code != 200:
-            raise RESTAPIError(response, self.debug)
+        if self.debug:
+            self._debug_output.append(debug_request(response))
+            if response.status_code != 200:
+                raise RESTAPIError(response, self.debug_file)
         return RESTObject(response.json())
 
     def modify(self, path: str, data: dict) -> RESTObject:
@@ -199,8 +217,10 @@ class BIG:
             self._check_token()
         url = self._get_url(path)
         response = self.session.patch(url, json=data)
-        if response.status_code != 200:
-            raise RESTAPIError(response, self.debug)
+        if self.debug:
+            self._debug_output.append(debug_request(response))
+            if response.status_code != 200:
+                raise RESTAPIError(response, self.debug_file)
         return RESTObject(response.json())
 
     def show(self, path: str) -> list[RESTObject]:
@@ -223,8 +243,10 @@ class BIG:
         url = self._get_url(path)
         url = f"{url}/stats"
         response = self.session.get(url)
-        if response.status_code != 200:
-            raise RESTAPIError(response, self.debug)
+        if self.debug:
+            self._debug_output.append(debug_request(response))
+            if response.status_code != 200:
+                raise RESTAPIError(response, self.debug_file)
         response_json = response.json()
         objects = []
         if "entries" in response_json:
@@ -378,8 +400,10 @@ class BIG:
         url = self._get_url(path)
         url = f"{url}/example"
         response = self.session.get(url)
-        if response.status_code != 200:
-            raise RESTAPIError(response, self.debug)
+        if self.debug:
+            self._debug_output.append(debug_request(response))
+            if response.status_code != 200:
+                raise RESTAPIError(response, self.debug_file)
         return RESTObject(response.json())
 
     def _get_url(self, path: str) -> str:
@@ -439,8 +463,10 @@ class BIG:
             data["refreshToken"] = data_token
             response = self.session.post(
                 f"https://{self.device}/mgmt/shared/authn/exchange", json=data)
-        if response.status_code != 200:
-            raise RESTAPIError(response, self.debug)
+        if self.debug:
+            self._debug_output.append(debug_request(response))
+            if response.status_code != 200:
+                raise RESTAPIError(response, self.debug_file)
         self._token_counter = time.time()
         self._token = response.json()["token"]["token"]
         self.session.headers.update({"X-F5-Auth-Token": f"{self._token}"})
@@ -476,8 +502,10 @@ class BIG:
         elif self.token is not None:
             response = self.session.get(
                 f"https://{self.device}/mgmt/shared/echo-query")
-            if response.status_code != 200:
-                raise RESTAPIError(response, self.debug)
+            if self.debug:
+                self._debug_output.append(debug_request(response))
+                if response.status_code != 200:
+                    raise RESTAPIError(response, self.debug_file)
         else:
             data = {}
             data["username"] = self.username
@@ -485,5 +513,7 @@ class BIG:
             data["loginProviderName"] = self.login_provider
             response = self.session.post(
                 f"https://{self.device}/mgmt/shared/authn/login", json=data)
-            if response.status_code != 200:
-                raise RESTAPIError(response, self.debug)
+            if self.debug:
+                self._debug_output.append(debug_request(response))
+                if response.status_code != 200:
+                    raise RESTAPIError(response, self.debug_file)
