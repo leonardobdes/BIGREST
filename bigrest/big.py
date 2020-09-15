@@ -109,13 +109,13 @@ class BIG:
         if response.status_code != 200:
             raise RESTAPIError(response, self.debug)
         response_json = response.json()
-        objects = []
         if "items" in response_json:
+            collection = []
             for obj in response_json["items"]:
-                objects.append(RESTObject(obj))
+                collection.append(RESTObject(obj))
+            return collection
         else:
-            objects.append(RESTObject(response_json))
-        return objects
+            return RESTObject(response_json)
 
     def save(self, obj: RESTObject) -> RESTObject:
         """
