@@ -13,6 +13,7 @@ import time
 from .big import BIG
 from .common.exceptions import RESTAPIError
 from .common.restobject import RESTObject
+from .utils.utils import debug_request
 
 
 class BIGIP(BIG):
@@ -36,11 +37,11 @@ class BIGIP(BIG):
     def __init__(self, device: str, username: str = None,
                  password: str = None, login_provider: str = "tmos",
                  request_token: bool = False, token: str = None,
-                 debug: str = None) -> BIGIP:
+                 **kwargs) -> BIGIP:
         super().__init__(
             device=device, username=username, password=password,
             login_provider=login_provider, request_token=request_token,
-            token=token, debug=debug)
+            token=token, **kwargs)
 
     def task_start(self, path: str, data: dict) -> RESTObject:
         """
@@ -60,15 +61,17 @@ class BIGIP(BIG):
             self._check_token()
         url = self._get_url(path)
         response = self.session.post(url, json=data)
+        if self.debug:
+            self._debug_output.append(debug_request(response))
         if response.status_code != 200:
-            raise RESTAPIError(response, self.debug)
+            raise RESTAPIError(response, self.debug_file)
         id_ = response.json()["_taskId"]
         data = {}
         data["_taskState"] = "VALIDATING"
         url = f"{url}/{id_}"
         response_put = self.session.put(url, json=data)
         if response_put.status_code != 202:
-            raise RESTAPIError(response_put)
+            raise RESTAPIError(response_put, self.debug_file)
         return RESTObject(response.json())
 
     def task_wait(self, obj: RESTObject, interval: int = 10) -> None:
@@ -93,11 +96,13 @@ class BIGIP(BIG):
             if self.request_token or self.refresh_token is not None:
                 self._check_token()
             response = self.session.get(url)
+            if self.debug:
+                self._debug_output.append(debug_request(response))
             if response.status_code != 200:
-                raise RESTAPIError(response, self.debug)
+                raise RESTAPIError(response, self.debug_file)
             status = response.json()["_taskState"]
             if status == "FAILED":
-                raise RESTAPIError(response, self.debug)
+                raise RESTAPIError(response, self.debug_file)
             if status == "COMPLETED":
                 return
             else:
@@ -121,11 +126,13 @@ class BIGIP(BIG):
         path = self._get_path(obj)
         url = self._get_url(path)
         response = self.session.get(url)
+        if self.debug:
+            self._debug_output.append(debug_request(response))
         if response.status_code != 200:
-            raise RESTAPIError(response, self.debug)
+            raise RESTAPIError(response, self.debug_file)
         status = response.json()["_taskState"]
         if status == "FAILED":
-            raise RESTAPIError(response, self.debug)
+            raise RESTAPIError(response, self.debug_file)
         if status == "COMPLETED":
             return True
         else:
@@ -150,8 +157,10 @@ class BIGIP(BIG):
         url = self._get_url(path)
         url = f"{url}/result"
         response = self.session.get(url)
+        if self.debug:
+            self._debug_output.append(debug_request(response))
         if response.status_code != 200:
-            raise RESTAPIError(response, self.debug)
+            raise RESTAPIError(response, self.debug_file)
         if "commandResult" in response.json():
             return response.json()["commandResult"]
         else:
@@ -174,11 +183,13 @@ class BIGIP(BIG):
             self._check_token()
         url = self._get_url(path)
         response = self.session.get(url)
+        if self.debug:
+            self._debug_output.append(debug_request(response))
         if response.status_code == 200:
             return True
         if response.status_code == 404:
             return False
-        raise RESTAPIError(response, self.debug)
+        raise RESTAPIError(response, self.debug_file)
 
     def transaction_create(self) -> RESTObject:
         """
@@ -194,8 +205,10 @@ class BIGIP(BIG):
             self._check_token()
         url = self._get_url("/mgmt/tm/transaction")
         response = self.session.post(url, json={})
+        if self.debug:
+            self._debug_output.append(debug_request(response))
         if response.status_code != 200:
-            raise RESTAPIError(response, self.debug)
+            raise RESTAPIError(response, self.debug_file)
         self._transaction = response.json()["transId"]
         self.session.headers.update(
             {"X-F5-REST-Coordination-Id": f"{self._transaction}"})
@@ -227,8 +240,10 @@ class BIGIP(BIG):
         data = {}
         data["state"] = "VALIDATING"
         response = self.session.patch(url, json=data)
+        if self.debug:
+            self._debug_output.append(debug_request(response))
         if response.status_code != 200:
-            raise RESTAPIError(response, self.debug)
+            raise RESTAPIError(response, self.debug_file)
         return RESTObject(response.json())
 
     def __exit__(self, type, value, traceback) -> None:
@@ -258,8 +273,10 @@ class BIGIP(BIG):
         data["validateOnly"] = True
         data["state"] = "VALIDATING"
         response = self.session.patch(url, json=data)
+        if self.debug:
+            self._debug_output.append(debug_request(response))
         if response.status_code != 200:
-            raise RESTAPIError(response, self.debug)
+            raise RESTAPIError(response, self.debug_file)
         else:
             self.session.headers.update(
                 {"X-F5-REST-Coordination-Id": f"{self._transaction}"})

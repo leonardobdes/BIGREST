@@ -12,6 +12,7 @@ import time
 from .big import BIG
 from .common.exceptions import RESTAPIError
 from .common.restobject import RESTObject
+from .utils.utils import debug_request
 
 
 class BIGIQ(BIG):
@@ -52,8 +53,10 @@ class BIGIQ(BIG):
             self._check_token()
         url = self._get_url(path)
         response = self.session.post(url, json=data)
+        if self.debug:
+            self._debug_output.append(debug_request(response))
         if response.status_code != 202:
-            raise RESTAPIError(response, self.debug)
+            raise RESTAPIError(response, self.debug_file)
         return RESTObject(response.json())
 
     def task_wait(self, obj: RESTObject, interval: int = 10) -> None:
@@ -78,11 +81,13 @@ class BIGIQ(BIG):
             if self.request_token or self.refresh_token is not None:
                 self._check_token()
             response = self.session.get(url)
+            if self.debug:
+                self._debug_output.append(debug_request(response))
             if response.status_code != 200:
-                raise RESTAPIError(response, self.debug)
+                raise RESTAPIError(response, self.debug_file)
             status = response.json()["status"]
             if status == "FAILED":
-                raise RESTAPIError(response, self.debug)
+                raise RESTAPIError(response, self.debug_file)
             if status == "FINISHED":
                 return
             else:
@@ -106,11 +111,13 @@ class BIGIQ(BIG):
         path = self._get_path(obj)
         url = self._get_url(path)
         response = self.session.get(url)
+        if self.debug:
+            self._debug_output.append(debug_request(response))
         if response.status_code != 200:
-            raise RESTAPIError(response, self.debug)
+            raise RESTAPIError(response, self.debug_file)
         status = response.json()["status"]
         if status == "FAILED":
-            raise RESTAPIError(response, self.debug)
+            raise RESTAPIError(response, self.debug_file)
         if status == "FINISHED":
             return True
         else:
@@ -133,8 +140,10 @@ class BIGIQ(BIG):
             self._check_token()
         url = self._get_url(path)
         response = self.session.get(url)
+        if self.debug:
+            self._debug_output.append(debug_request(response))
         if response.status_code != 200:
-            raise RESTAPIError(response, self.debug)
+            raise RESTAPIError(response, self.debug_file)
         response_json = response.json()
         if response_json["items"]:
             return True

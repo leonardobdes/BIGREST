@@ -118,8 +118,8 @@ class BIG:
         response = self.session.get(url)
         if self.debug:
             self._debug_output.append(debug_request(response))
-            if response.status_code != 200:
-                raise RESTAPIError(response, self.debug_file)
+        if response.status_code != 200:
+            raise RESTAPIError(response, self.debug_file)
         response_json = response.json()
         objects = []
         if "items" in response_json:
@@ -149,8 +149,8 @@ class BIG:
         response = self.session.put(url, json=obj.asdict())
         if self.debug:
             self._debug_output.append(debug_request(response))
-            if response.status_code != 200:
-                raise RESTAPIError(response, self.debug_file)
+        if response.status_code != 200:
+            raise RESTAPIError(response, self.debug_file)
         return RESTObject(response.json())
 
     def delete(self, path: str) -> None:
@@ -172,8 +172,8 @@ class BIG:
         response = self.session.delete(url)
         if self.debug:
             self._debug_output.append(debug_request(response))
-            if response.status_code != 200:
-                raise RESTAPIError(response, self.debug_file)
+        if response.status_code != 200:
+            raise RESTAPIError(response, self.debug_file)
 
     def create(self, path: str, data: dict) -> RESTObject:
         """
@@ -195,8 +195,8 @@ class BIG:
         response = self.session.post(url, json=data)
         if self.debug:
             self._debug_output.append(debug_request(response))
-            if response.status_code != 200:
-                raise RESTAPIError(response, self.debug_file)
+        if response.status_code != 200:
+            raise RESTAPIError(response, self.debug_file)
         return RESTObject(response.json())
 
     def modify(self, path: str, data: dict) -> RESTObject:
@@ -219,8 +219,8 @@ class BIG:
         response = self.session.patch(url, json=data)
         if self.debug:
             self._debug_output.append(debug_request(response))
-            if response.status_code != 200:
-                raise RESTAPIError(response, self.debug_file)
+        if response.status_code != 200:
+            raise RESTAPIError(response, self.debug_file)
         return RESTObject(response.json())
 
     def show(self, path: str) -> list[RESTObject]:
@@ -245,8 +245,8 @@ class BIG:
         response = self.session.get(url)
         if self.debug:
             self._debug_output.append(debug_request(response))
-            if response.status_code != 200:
-                raise RESTAPIError(response, self.debug_file)
+        if response.status_code != 200:
+            raise RESTAPIError(response, self.debug_file)
         response_json = response.json()
         objects = []
         if "entries" in response_json:
@@ -309,7 +309,7 @@ class BIG:
             {"Content-Range": f"0-{range_size}/0"})
         response = self.session.get(url)
         if response.status_code != 200 and response.status_code != 206:
-            raise RESTAPIError(response, self.debug)
+            raise RESTAPIError(response, self.debug_file)
         content_range = response.headers.get("Content-Range")
         range_start = range_size + 1
         range_end = range_start + range_size
@@ -326,7 +326,7 @@ class BIG:
                 response = self.session.get(url)
                 file_.write(response.content)
                 if response.status_code != 200:
-                    raise RESTAPIError(response, self.debug)
+                    raise RESTAPIError(response, self.debug_file)
                 range_start = range_end + 1
                 range_end = range_end + range_size + 1
         self.session.headers.pop("Content-Range")
@@ -364,7 +364,7 @@ class BIG:
                     {"Content-Range": f"{range_start}-{size}/{size + 1}"})
                 response = self.session.post(url, data=file_.read(size + 1))
                 if response.status_code != 200:
-                    raise RESTAPIError(response, self.debug)
+                    raise RESTAPIError(response, self.debug_file)
             else:
                 while size >= range_start:
                     if range_end > size:
@@ -376,7 +376,7 @@ class BIG:
                     response = self.session.post(
                         url, data=file_.read(bytes_to_read))
                     if response.status_code != 200:
-                        raise RESTAPIError(response, self.debug)
+                        raise RESTAPIError(response, self.debug_file)
                     range_start = range_end + 1
                     range_end = range_end + range_size + 1
         self.session.headers.pop("Content-Range")
@@ -402,8 +402,8 @@ class BIG:
         response = self.session.get(url)
         if self.debug:
             self._debug_output.append(debug_request(response))
-            if response.status_code != 200:
-                raise RESTAPIError(response, self.debug_file)
+        if response.status_code != 200:
+            raise RESTAPIError(response, self.debug_file)
         return RESTObject(response.json())
 
     def _get_url(self, path: str) -> str:
@@ -465,8 +465,8 @@ class BIG:
                 f"https://{self.device}/mgmt/shared/authn/exchange", json=data)
         if self.debug:
             self._debug_output.append(debug_request(response))
-            if response.status_code != 200:
-                raise RESTAPIError(response, self.debug_file)
+        if response.status_code != 200:
+            raise RESTAPIError(response, self.debug_file)
         self._token_counter = time.time()
         self._token = response.json()["token"]["token"]
         self.session.headers.update({"X-F5-Auth-Token": f"{self._token}"})
@@ -504,8 +504,8 @@ class BIG:
                 f"https://{self.device}/mgmt/shared/echo-query")
             if self.debug:
                 self._debug_output.append(debug_request(response))
-                if response.status_code != 200:
-                    raise RESTAPIError(response, self.debug_file)
+            if response.status_code != 200:
+                raise RESTAPIError(response, self.debug_file)
         else:
             data = {}
             data["username"] = self.username
@@ -515,5 +515,5 @@ class BIG:
                 f"https://{self.device}/mgmt/shared/authn/login", json=data)
             if self.debug:
                 self._debug_output.append(debug_request(response))
-                if response.status_code != 200:
-                    raise RESTAPIError(response, self.debug_file)
+            if response.status_code != 200:
+                raise RESTAPIError(response, self.debug_file)
