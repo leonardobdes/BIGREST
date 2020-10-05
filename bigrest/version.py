@@ -12,4 +12,6 @@ History Information:
     Fixed documentation
 1.0.3
     Fixed documentation
+1.0.4
+    Fixed issue #4
 """

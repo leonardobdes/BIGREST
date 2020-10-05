@@ -89,9 +89,9 @@ class BIG:
         # Connect to device
         self._connect()
 
-    def load(self, path: str) -> list[RESTObject]:
+    def load(self, path: str) -> Union[list[RESTObject], RESTObject]:
         """
-        Loads a list of objects from the device.
+        Loads one object or a list of objects from the device.
 
         Sends an HTTP GET request to the iControl REST API.
 

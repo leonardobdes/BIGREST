@@ -65,6 +65,15 @@ Author
 | **LinkedIn:**
 | https://uk.linkedin.com/in/leonardobdes
 
+Contributors
+------------
+
+| **Name:**
+| Jason Rahm
+
+| **LinkedIn:**
+| https://www.linkedin.com/in/jrahm
+
 How to install?
 ---------------
 
