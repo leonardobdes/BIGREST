@@ -65,7 +65,7 @@ Author
 | **LinkedIn:**
 | https://uk.linkedin.com/in/leonardobdes
 
-Contributors
+Contributor
 ------------
 
 | **Name:**
