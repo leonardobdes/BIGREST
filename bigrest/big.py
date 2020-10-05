@@ -5,6 +5,7 @@
 # Turns all annotations into string literals.
 # This is one exception to the external import rule.
 from __future__ import annotations
+from typing import Union
 import requests
 import time
 import urllib3
