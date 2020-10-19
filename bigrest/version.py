@@ -1,6 +1,6 @@
 """File with version and history information."""
 
-__version__ = '1.1.0'
+__version__ = '1.2.0'
 
 """
 History Information:
