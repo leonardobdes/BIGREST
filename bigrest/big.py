@@ -93,6 +93,8 @@ class BIG:
     def load(self, path: str) -> Union[list[RESTObject], RESTObject]:
         """
         Loads one object or a list of objects from the device.
+        If you call with a specific object name, it returns a single object.
+        If you call without an object name, it returns a list of objects.
 
         Sends an HTTP GET request to the iControl REST API.
 
@@ -111,10 +113,10 @@ class BIG:
             raise RESTAPIError(response, self.debug)
         response_json = response.json()
         if "items" in response_json:
-            collection = []
+            objects = []
             for obj in response_json["items"]:
-                collection.append(RESTObject(obj))
-            return collection
+                objects.append(RESTObject(obj))
+            return objects
         else:
             return RESTObject(response_json)
 
@@ -204,9 +206,11 @@ class BIG:
             raise RESTAPIError(response, self.debug)
         return RESTObject(response.json())
 
-    def show(self, path: str) -> list[RESTObject]:
+    def show(self, path: str) -> Union[list[RESTObject], RESTObject]:
         """
-        Gets statistical information about the object from the device.
+        Gets statistical information about the objects from the device.
+        If you call with a specific object name, it returns a single object.
+        If you call without an object name, it returns a list of objects.
 
         Similar to tmsh show command.
 
@@ -239,7 +243,10 @@ class BIG:
                     objects.append(RESTObject(entries))
         else:
             objects.append(RESTObject(response_json))
-        return objects
+        if "collection" in response_json["kind"]:
+            return objects
+        else:
+            return objects[0]
 
     def command(self, path: str, data: dict) -> str:
         """
@@ -358,7 +365,6 @@ class BIG:
                         raise RESTAPIError(response, self.debug)
                     range_start = range_end + 1
                     range_end = range_end + range_size + 1
-        raise RESTAPIError(response, self.debug)
         self.session.headers.pop("Content-Range")
         self.session.headers.update({"Content-Type": "application/json"})
 

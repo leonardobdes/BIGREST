@@ -126,7 +126,7 @@ else:
 
 # Add pool to virtual server
 virtual = device.load(
-    f"/mgmt/cm/adc-core/working-config/ltm/virtual/{virtual_id}")[0]
+    f"/mgmt/cm/adc-core/working-config/ltm/virtual/{virtual_id}")
 virtual.properties["poolReference"] = {"link": f"{pool_link}"}
 virtual_updated = device.save(virtual)
 if virtual_updated.properties["poolReference"]["name"] != pool_name:
@@ -164,7 +164,7 @@ for virtual in virtuals:
 
 # Print node
 node = device.load(
-    f"/mgmt/cm/adc-core/working-config/ltm/node/{node_id}")[0]
+    f"/mgmt/cm/adc-core/working-config/ltm/node/{node_id}")
 print("Print node:")
 print(node)
 
@@ -205,7 +205,7 @@ else:
 
 # Show virtual server information
 virtual = device.show(
-    f"/mgmt/cm/adc-core/working-config/ltm/virtual/{virtual_id}")[0]
+    f"/mgmt/cm/adc-core/working-config/ltm/virtual/{virtual_id}")
 virtual_availability = virtual.properties[
     "status.availabilityState"]["description"]
 if virtual_availability != "unknown":
