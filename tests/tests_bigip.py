@@ -80,7 +80,7 @@ else:
 
 # Add pool to virtual server
 virtual = device.load(
-    f"/mgmt/tm/ltm/virtual/{rest_format(virtual_name)}")[0]
+    f"/mgmt/tm/ltm/virtual/{rest_format(virtual_name)}")
 virtual.properties["pool"] = pool_name
 virtual_updated = device.save(virtual)
 if virtual_updated.properties["pool"] != pool_name:
@@ -95,7 +95,7 @@ for virtual in virtuals:
     print(virtual.properties["name"])
 
 # Print node
-node = device.load(f"/mgmt/tm/ltm/node/{rest_format(node_name)}")[0]
+node = device.load(f"/mgmt/tm/ltm/node/{rest_format(node_name)}")
 print("Print node:")
 print(node)
 
@@ -128,7 +128,7 @@ else:
 
 # Show virtual server information
 virtual = device.show(
-    f"/mgmt/tm/ltm/virtual/{rest_format(virtual_name)}")[0]
+    f"/mgmt/tm/ltm/virtual/{rest_format(virtual_name)}")
 max_conns = virtual.properties["clientside.maxConns"]["value"]
 if max_conns != 0:
     raise Exception(max_conns)

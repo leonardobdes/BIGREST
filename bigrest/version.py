@@ -1,6 +1,6 @@
 """File with version and history information."""
 
-__version__ = '1.2.0'
+__version__ = '1.3.0'
 
 """
 History Information:
@@ -20,4 +20,6 @@ History Information:
 1.2.0
     Moved debug functionality to a separated file.
     Debug output now includes curl command.
+1.3.0
+    Fixed issue #7
 """
