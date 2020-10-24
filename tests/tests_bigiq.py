@@ -24,7 +24,7 @@ print("Device IP or name: ", end="")
 ip = input()
 
 # Create a device object with basic authentication
-device = BIGIQ(ip, username, password)
+device = BIGIQ(ip, username, password, debug="debug.txt")
 
 # Objects list
 device_name = "LABBIGIP1.lab.local"
