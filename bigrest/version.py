@@ -1,6 +1,6 @@
 """File with version and history information."""
 
-__version__ = '1.3.0'
+__version__ = '1.3.1'
 
 """
 History Information:
@@ -22,4 +22,7 @@ History Information:
     Debug output now includes curl command.
 1.3.0
     Fixed issue #7
+1.3.1
+    Fix for issue #7 caused problems to BIG-IQ.
+    Checking "collection" for BIG-IP and now "com.f5.rest.common" for BIG-IQ.
 """

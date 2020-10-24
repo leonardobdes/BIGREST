@@ -243,7 +243,10 @@ class BIG:
                     objects.append(RESTObject(entries))
         else:
             objects.append(RESTObject(response_json))
-        if "collection" in response_json["kind"]:
+        # "collection" for BIG-IP
+        # "com.f5.rest.common" for BIG-IQ
+        if ("collection" in response_json["kind"] or
+                "com.f5.rest.common" in response_json["entries"]):
             return objects
         else:
             return objects[0]
