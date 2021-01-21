@@ -180,7 +180,7 @@ class BIG:
             self._check_token()
         url = self._get_url(path)
         response = self.session.post(url, json=data)
-        if response.status_code != 200:
+        if response.status_code != 200 and response.status_code != 201:
             raise RESTAPIError(response, self.debug)
         return RESTObject(response.json())
 
