@@ -1,6 +1,6 @@
 """File with version and history information."""
 
-__version__ = '1.3.1'
+__version__ = '1.3.2'
 
 """
 History Information:
@@ -25,4 +25,6 @@ History Information:
 1.3.1
     Fix for issue #7 caused problems to BIG-IQ.
     Checking "collection" for BIG-IP and now "com.f5.rest.common" for BIG-IQ.
+1.3.2
+    Fixed issue #8
 """
