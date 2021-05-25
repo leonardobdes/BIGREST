@@ -1,6 +1,6 @@
 """File with version and history information."""
 
-__version__ = '1.3.2'
+__version__ = '1.3.3'
 
 """
 History Information:
@@ -27,4 +27,8 @@ History Information:
     Checking "collection" for BIG-IP and now "com.f5.rest.common" for BIG-IQ.
 1.3.2
     Fixed issue #8
+1.3.3
+    Add 202 respose to create method.
+    Updated documentation about upload and download methods
+    Removed unnecessary f-strings
 """

@@ -24,7 +24,7 @@ Explanation
 | I am only aware of one location that you can upload files to BIG-IQ.
 
 
-| **Folder:** /var/config/rest/downloads/tmp-access/
-| **HTTP path:** /mgmt/shared/file-transfer/downloads
+| **Folder:** /var/config/rest/downloads
+| **HTTP path:** /mgmt/shared/file-transfer/uploads
 
 | **/var/config/rest/downloads** is the folder created for iControl REST API downloads and uploads.

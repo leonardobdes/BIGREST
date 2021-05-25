@@ -12,7 +12,7 @@ Example
 .. code-block:: python
 
     device.download(
-        "/mgmt/shared/file-transfer/downloads", "bigrest.iso")
+        "/mgmt/shared/file-transfer/uploads", "bigrest.iso")
 
 Explanation
 -----------
@@ -24,8 +24,8 @@ Explanation
 | I am only aware of 2 locations from where you can download files from BIG-IP.
 
 
-| **Folder:** /var/config/rest/downloads/tmp-access/
-| **HTTP path:** /mgmt/shared/file-transfer/downloads
+| **Folder:** /var/config/rest/downloads
+| **HTTP path:** /mgmt/shared/file-transfer/uploads
 
 | **Folder:** /shared/images
 | **HTTP path:** /mgmt/cm/autodeploy/software-image-downloads

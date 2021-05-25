@@ -24,8 +24,8 @@ Explanation
 | I am only aware of 2 locations that you can upload files to BIG-IP.
 
 
-| **Folder:** /var/config/rest/downloads/tmp-access/
-| **HTTP path:** /mgmt/shared/file-transfer/downloads
+| **Folder:** /var/config/rest/downloads
+| **HTTP path:** /mgmt/shared/file-transfer/uploads
 
 | **Folder:** /shared/images
 | **HTTP path:** /mgmt/cm/autodeploy/software-image-downloads
