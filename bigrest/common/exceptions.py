@@ -44,7 +44,7 @@ class RESTAPIError(Error):
                 response_body = f"\nResponse Body:\n{response_json}"
             except Exception:
                 if reponse_content_type == "application/octet-stream":
-                    response_body = f"\nResponse Body:\n<binary data>"
+                    response_body = "\nResponse Body:\n<binary data>"
                 else:
                     response_body = f"\nResponse Body:\n{response.text}"
             response_status = response.status_code

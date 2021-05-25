@@ -66,7 +66,7 @@ def debug_curl(response: requests.Response) -> str:
         response: A object created from a response to a HTTP request.
     """
 
-    request = f"Curl Command:\n"
+    request = "Curl Command:\n"
     request += f"curl -k -X {response.request.method} {response.request.url}"
     headers = response.request.headers
     for header in headers:
@@ -77,5 +77,5 @@ def debug_curl(response: requests.Response) -> str:
             json.dumps(body)
             request += f" -d '{body}'"
         except Exception:
-            request += f" --data-binary @filename"
-    return f"{request}\n"
+            request += " --data-binary @filename"
+    return "{request}\n"
