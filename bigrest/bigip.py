@@ -152,8 +152,8 @@ class BIGIP(BIG):
         response = self.session.get(url)
         if response.status_code != 200:
             raise RESTAPIError(response, self.debug)
-        if "commandResult" in response.json():
-            return response.json()["commandResult"]
+        if "_taskState" in response.json():
+            return response.json()["_taskState"]
         else:
             return str()
 
