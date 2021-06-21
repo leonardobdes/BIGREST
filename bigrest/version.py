@@ -7,7 +7,7 @@ History Information:
 1.0.0
     First Version
 1.0.1
-    Removed tests folder from pip
+    Removed tests-old folder from pip
 1.0.2
     Fixed documentation
 1.0.3

@@ -12,9 +12,9 @@ import hashlib
 
 # Internal imports
 # Import only with "from x import y", to simplify the code.
-from ..bigrest.bigiq import BIGIQ
-from ..bigrest.utils.utils import token
-from ..bigrest.utils.utils import refresh_token
+from bigrest.bigiq import BIGIQ
+from bigrest.utils.utils import token
+from bigrest.utils.utils import refresh_token
 
 # Get username, password, and ip
 print("Username: ", end="")

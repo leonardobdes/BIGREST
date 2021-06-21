@@ -1,0 +1,6 @@
+-r testing.txt
+
+pre-commit
+flake8
+black
+bandit

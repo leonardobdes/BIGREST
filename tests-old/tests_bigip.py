@@ -12,9 +12,9 @@ import hashlib
 
 # Internal imports
 # Import only with "from x import y", to simplify the code.
-from ..bigrest.bigip import BIGIP
-from ..bigrest.utils.utils import rest_format
-from ..bigrest.utils.utils import token
+from bigrest.bigip import BIGIP
+from bigrest.utils.utils import rest_format
+from bigrest.utils.utils import token
 
 # Get username, password, and ip
 print("Username: ", end="")
