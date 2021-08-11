@@ -18,8 +18,8 @@ Example
 .. code-block:: python
 
     path = (
-        f"/mgmt/tm/ltm/pool/{rest_format("/bigrest/bigrest_pool")}"
-        f"/members/{rest_format("/bigrest/172.17.0.1%1:80")}"
+        f"/mgmt/tm/ltm/pool/{rest_format('/bigrest/bigrest_pool')}"
+        f"/members/{rest_format('/bigrest/172.17.0.1%1:80')}"
     )
     device.delete(path)
 
