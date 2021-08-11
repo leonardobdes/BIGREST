@@ -16,7 +16,7 @@ Example
         "?$filter=name eq 'bigrest_vs'"
     )
     virtual_id = device.id(path)
-    virtual = device.load(f"/mgmt/cm/adc-core/working-config/ltm/virtual/{virtual_id})
+    virtual = device.load(f"/mgmt/cm/adc-core/working-config/ltm/virtual/{virtual_id}")
     virtuals = device.load("/mgmt/cm/adc-core/working-config/ltm/virtual")
 
 Explanation
