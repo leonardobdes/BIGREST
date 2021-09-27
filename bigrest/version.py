@@ -1,6 +1,6 @@
 """File with version and history information."""
 
-__version__ = '1.3.3'
+__version__ = '1.3.4'
 
 """
 History Information:
@@ -31,4 +31,6 @@ History Information:
     Add 202 respose to create method.
     Updated documentation about upload and download methods
     Removed unnecessary f-strings
+1.3.4
+    Fixed documentation typos in bigiq_load.rst and utils.rst files.
 """
