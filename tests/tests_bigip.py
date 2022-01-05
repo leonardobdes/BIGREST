@@ -100,7 +100,7 @@ print("Print node:")
 print(node)
 
 # Print node example
-node = device.example(f"/mgmt/tm/ltm/node")
+node = device.example("/mgmt/tm/ltm/node")
 print("Print node example:")
 print(node)
 
@@ -210,7 +210,7 @@ device.upload(
     "/mgmt/cm/autodeploy/software-image-uploads", filename=filename)
 os.remove(filename)
 device.download(
-    f"/mgmt/cm/autodeploy/software-image-downloads", filename=filename)
+    "/mgmt/cm/autodeploy/software-image-downloads", filename=filename)
 with open(filename, "rb") as file_:
     file_hash = hashlib.md5()
     file_hash.update(file_.read())

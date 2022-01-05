@@ -475,10 +475,10 @@ class BIG:
         """
         Test a connection to the device.
 
-        If it is not using basic authentication, tries to get a token.
+        If resquest_token or refresh_token is set, tries to get a token.
 
-        if it is using basic authentication, sends an HTTP POST request
-            to the iControl REST API.
+        If using a token or basic authentication, sends an HTTP GET request
+            to the iControl REST API to test the connection.
 
         Exceptions:
             RESTAPIError: Raised when iControl REST API returns an error.
@@ -486,17 +486,8 @@ class BIG:
 
         if self.request_token or self.refresh_token is not None:
             self._get_token()
-        elif self.token is not None:
+        else:
             response = self.session.get(
                 f"https://{self.device}/mgmt/shared/echo-query")
-            if response.status_code != 200:
-                raise RESTAPIError(response, self.debug)
-        else:
-            data = {}
-            data["username"] = self.username
-            data["password"] = self.password
-            data["loginProviderName"] = self.login_provider
-            response = self.session.post(
-                f"https://{self.device}/mgmt/shared/authn/login", json=data)
             if response.status_code != 200:
                 raise RESTAPIError(response, self.debug)

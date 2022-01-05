@@ -117,7 +117,7 @@ data = {
     }
 }
 virtual = device.create(
-    f"/mgmt/cm/adc-core/working-config/ltm/virtual", data)
+    "/mgmt/cm/adc-core/working-config/ltm/virtual", data)
 virtual_id = virtual.properties["id"]
 if virtual.properties["name"] != virtual_name:
     raise Exception(virtual.properties["name"])
@@ -169,7 +169,7 @@ print("Print node:")
 print(node)
 
 # Print node example
-node = device.example(f"/mgmt/cm/adc-core/working-config/ltm/node")
+node = device.example("/mgmt/cm/adc-core/working-config/ltm/node")
 print("Print node example:")
 print(node)
 
@@ -241,7 +241,7 @@ data["utilCmdArgs"] = ("/var/config/rest/downloads/bigrest.iso "
                        "/var/config/rest/downloads/tmp-access/")
 device.command("/mgmt/tm/util/unix-mv", data)
 device.download(
-    f"/mgmt/shared/file-transfer/downloads", filename=filename)
+    "/mgmt/shared/file-transfer/downloads", filename=filename)
 with open(filename, "rb") as file_:
     file_hash = hashlib.md5()
     file_hash.update(file_.read())

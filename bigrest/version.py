@@ -1,6 +1,6 @@
 """File with version and history information."""
 
-__version__ = '1.3.4'
+__version__ = '1.4.0'
 
 """
 History Information:
@@ -33,4 +33,6 @@ History Information:
     Removed unnecessary f-strings
 1.3.4
     Fixed documentation typos in bigiq_load.rst and utils.rst files.
+1.4.0
+    Fixed issue #13
 """
