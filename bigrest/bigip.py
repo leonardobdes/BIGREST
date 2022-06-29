@@ -36,11 +36,11 @@ class BIGIP(BIG):
     def __init__(self, device: str, username: str = None,
                  password: str = None, login_provider: str = "tmos",
                  request_token: bool = False, token: str = None,
-                 debug: str = None) -> BIGIP:
+                 debug: str = None, session_verify: bool = True) -> BIGIP:
         super().__init__(
             device=device, username=username, password=password,
             login_provider=login_provider, request_token=request_token,
-            token=token, debug=debug)
+            token=token, debug=debug, session_verify=session_verify)
 
     def task_start(self, path: str, data: dict) -> RESTObject:
         """

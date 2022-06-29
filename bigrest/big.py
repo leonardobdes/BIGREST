@@ -42,6 +42,7 @@ class BIG:
         refresh_token: Refresh token to be used to request new token,
             the new token will be then used for HTTP requests.
         debug: Debug file name to be used to output the debug information.
+        session_verify: Disables SSL cert validation if set to False
 
     Exceptions:
         InvalidOptionError: Raised when invalid options are used as arguments.
@@ -50,7 +51,8 @@ class BIG:
     def __init__(self, device: str, username: str = None,
                  password: str = None, login_provider: str = "tmos",
                  request_token: bool = False, token: str = None,
-                 refresh_token: str = None, debug: str = None) -> BIG:
+                 refresh_token: str = None, debug: str = None,
+                 session_verify: bool = True) -> BIG:
 
         # Input validations
         message = (
@@ -77,6 +79,7 @@ class BIG:
         self._transaction = None
         self.debug = debug
         self.session = requests.Session()
+        self.session_verify = session_verify
 
         # Session settings
         if self.request_token is False:
@@ -84,7 +87,7 @@ class BIG:
         if self.token is not None:
             self.session.headers.update({"X-F5-Auth-Token": f"{self.token}"})
         self.session.headers.update({"Content-Type": "application/json"})
-        self.session.verify = False
+        self.session.verify = session_verify
         self.session.headers.update({"User-Agent": f"BIGREST/{__version__}"})
 
         # Connect to device
