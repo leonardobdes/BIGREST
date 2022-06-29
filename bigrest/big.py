@@ -490,7 +490,6 @@ class BIG:
         if self.request_token or self.refresh_token is not None:
             self._get_token()
         else:
-            response = self.session.get(
-                f"https://{self.device}/mgmt/shared/echo-query")
+            response = self.session.get(f"https://{self.device}/")
             if response.status_code != 200:
                 raise RESTAPIError(response, self.debug)
