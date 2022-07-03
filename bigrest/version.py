@@ -1,6 +1,6 @@
 """File with version and history information."""
 
-__version__ = '1.6.1'
+__version__ = '1.7.0'
 
 """
 History Information:
@@ -41,4 +41,6 @@ History Information:
     Allow users to choose to check SSL certificates or not.
 1.6.1
     Fixed test scripts to have session_verify=False.
+1.7.0
+    Added option to set a connection timeout.
 """

@@ -43,6 +43,7 @@ class BIG:
             the new token will be then used for HTTP requests.
         debug: Debug file name to be used to output the debug information.
         session_verify: Disables SSL certificate validation if set to False
+        timeout: Specifies the number of seconds to wait when sending requests to the device.
 
     Exceptions:
         InvalidOptionError: Raised when invalid options are used as arguments.
@@ -52,7 +53,7 @@ class BIG:
                  password: str = None, login_provider: str = "tmos",
                  request_token: bool = False, token: str = None,
                  refresh_token: str = None, debug: str = None,
-                 session_verify: bool = True) -> BIG:
+                 session_verify: bool = True, timeout: int = 10) -> BIG:
 
         # Input validations
         message = (
@@ -80,6 +81,7 @@ class BIG:
         self.debug = debug
         self.session = requests.Session()
         self.session_verify = session_verify
+        self.timeout = timeout
 
         # Session settings
         if self.request_token is False:
@@ -111,7 +113,7 @@ class BIG:
         if self.request_token or self.refresh_token is not None:
             self._check_token()
         url = self._get_url(path)
-        response = self.session.get(url)
+        response = self.session.get(url, timeout=self.timeout)
         if response.status_code != 200:
             raise RESTAPIError(response, self.debug)
         response_json = response.json()
@@ -140,7 +142,7 @@ class BIG:
             self._check_token()
         path = self._get_path(obj)
         url = self._get_url(path)
-        response = self.session.put(url, json=obj.asdict())
+        response = self.session.put(url, json=obj.asdict(), timeout=self.timeout)
         if response.status_code != 200:
             raise RESTAPIError(response, self.debug)
         return RESTObject(response.json())
@@ -161,7 +163,7 @@ class BIG:
         if self.request_token or self.refresh_token is not None:
             self._check_token()
         url = self._get_url(path)
-        response = self.session.delete(url)
+        response = self.session.delete(url, timeout=self.timeout)
         if response.status_code != 200:
             raise RESTAPIError(response, self.debug)
 
@@ -182,7 +184,7 @@ class BIG:
         if self.request_token or self.refresh_token is not None:
             self._check_token()
         url = self._get_url(path)
-        response = self.session.post(url, json=data)
+        response = self.session.post(url, json=data, timeout=self.timeout)
         if (response.status_code != 200 and
                 response.status_code != 201 and
                 response.status_code != 202):
@@ -206,7 +208,7 @@ class BIG:
         if self.request_token or self.refresh_token is not None:
             self._check_token()
         url = self._get_url(path)
-        response = self.session.patch(url, json=data)
+        response = self.session.patch(url, json=data, timeout=self.timeout)
         if response.status_code != 200:
             raise RESTAPIError(response, self.debug)
         return RESTObject(response.json())
@@ -232,7 +234,7 @@ class BIG:
             self._check_token()
         url = self._get_url(path)
         url = f"{url}/stats"
-        response = self.session.get(url)
+        response = self.session.get(url, timeout=self.timeout)
         if response.status_code != 200:
             raise RESTAPIError(response, self.debug)
         response_json = response.json()
@@ -301,7 +303,7 @@ class BIG:
         range_size = REST_API_MAXIMUM_CHUNK_SIZE - 1
         self.session.headers.update(
             {"Content-Range": f"0-{range_size}/0"})
-        response = self.session.get(url)
+        response = self.session.get(url, timeout=self.timeout)
         if response.status_code not in range(200, 207):
             raise RESTAPIError(self.response, self.debug)
         content_range = response.headers.get("Content-Range")
@@ -317,7 +319,7 @@ class BIG:
                 content_range = f"{range_start}-{range_end}/{size + 1}"
                 self.session.headers.update(
                     {"Content-Range": content_range})
-                response = self.session.get(url)
+                response = self.session.get(url, timeout=self.timeout)
                 file_.write(response.content)
                 if response.status_code != 200:
                     raise RESTAPIError(response, self.debug)
@@ -356,7 +358,7 @@ class BIG:
             if size <= range_size:
                 self.session.headers.update(
                     {"Content-Range": f"{range_start}-{size}/{size + 1}"})
-                response = self.session.post(url, data=file_.read(size + 1))
+                response = self.session.post(url, data=file_.read(size + 1), timeout=self.timeout)
                 if response.status_code != 200:
                     raise RESTAPIError(response, self.debug)
             else:
@@ -368,7 +370,7 @@ class BIG:
                         {"Content-Range": content_range})
                     bytes_to_read = (range_end - range_start) + 1
                     response = self.session.post(
-                        url, data=file_.read(bytes_to_read))
+                        url, data=file_.read(bytes_to_read), timeout=self.timeout)
                     if response.status_code != 200:
                         raise RESTAPIError(response, self.debug)
                     range_start = range_end + 1
@@ -393,7 +395,7 @@ class BIG:
             self._check_token()
         url = self._get_url(path)
         url = f"{url}/example"
-        response = self.session.get(url)
+        response = self.session.get(url, timeout=self.timeout)
         if response.status_code != 200:
             raise RESTAPIError(response, self.debug)
         return RESTObject(response.json())
@@ -447,14 +449,14 @@ class BIG:
             data["password"] = self.password
             data["loginProviderName"] = self.login_provider
             response = self.session.post(
-                f"https://{self.device}/mgmt/shared/authn/login", json=data)
+                f"https://{self.device}/mgmt/shared/authn/login", json=data, timeout=self.timeout)
         else:
             data_token = {}
             data_token["token"] = self.refresh_token
             data = {}
             data["refreshToken"] = data_token
             response = self.session.post(
-                f"https://{self.device}/mgmt/shared/authn/exchange", json=data)
+                f"https://{self.device}/mgmt/shared/authn/exchange", json=data, timeout=self.timeout)
         if response.status_code != 200:
             raise RESTAPIError(response, self.debug)
         self._token_counter = time.time()
@@ -491,6 +493,6 @@ class BIG:
             self._get_token()
         else:
             response = self.session.get(
-                f"https://{self.device}/mgmt/shared/echo-query")
+                f"https://{self.device}/mgmt/shared/echo-query", timeout=self.timeout)
             if response.status_code != 200:
                 raise RESTAPIError(response, self.debug)

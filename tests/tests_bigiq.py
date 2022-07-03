@@ -255,7 +255,7 @@ else:
 device = BIGIQ(ip, username, password, request_token=True, session_verify=False)
 
 # Create a device object to use token
-token_ = token(ip, username, password)
+token_ = token(ip, username, password, verify=False)
 device = BIGIQ(ip, username, password, token=token_, session_verify=False)
 
 # Create a device object to use refresh token

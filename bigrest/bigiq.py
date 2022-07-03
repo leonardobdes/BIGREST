@@ -30,6 +30,7 @@ class BIGIQ(BIG):
             the new token will be then used for HTTP requests.
         debug: Debug file name to be used to output the debug information.
         session_verify: Disables SSL certificate validation if set to False
+        timeout: Specifies the number of seconds to wait when sending requests to the device.
 
     Exceptions:
         InvalidOptionError: Raised when invalid options are used as arguments.
@@ -52,7 +53,7 @@ class BIGIQ(BIG):
         if self.request_token or self.refresh_token is not None:
             self._check_token()
         url = self._get_url(path)
-        response = self.session.post(url, json=data)
+        response = self.session.post(url, json=data, timeout=self.timeout)
         if response.status_code != 202:
             raise RESTAPIError(response, self.debug)
         return RESTObject(response.json())
@@ -78,7 +79,7 @@ class BIGIQ(BIG):
         while True:
             if self.request_token or self.refresh_token is not None:
                 self._check_token()
-            response = self.session.get(url)
+            response = self.session.get(url, timeout=self.timeout)
             if response.status_code != 200:
                 raise RESTAPIError(response, self.debug)
             status = response.json()["status"]
@@ -106,7 +107,7 @@ class BIGIQ(BIG):
             self._check_token()
         path = self._get_path(obj)
         url = self._get_url(path)
-        response = self.session.get(url)
+        response = self.session.get(url, timeout=self.timeout)
         if response.status_code != 200:
             raise RESTAPIError(response, self.debug)
         status = response.json()["status"]
@@ -133,7 +134,7 @@ class BIGIQ(BIG):
         if self.request_token or self.refresh_token is not None:
             self._check_token()
         url = self._get_url(path)
-        response = self.session.get(url)
+        response = self.session.get(url, timeout=self.timeout)
         if response.status_code != 200:
             raise RESTAPIError(response, self.debug)
         response_json = response.json()

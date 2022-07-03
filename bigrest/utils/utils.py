@@ -31,7 +31,7 @@ def rest_format(text: str) -> str:
 
 def token(device: str, username: str, password: str,
           login_provider: str = "tmos",
-          debug: str = None) -> str:
+          debug: str = None, verify: bool = True, timeout: int = 10) -> str:
     """
     Gets a token from the device.
 
@@ -41,6 +41,8 @@ def token(device: str, username: str, password: str,
         password: Password used to login to the device.
         login_provider: Login provider used to authenticate the user.
         debug: Debug file name to be used to output the debug information.
+        verify: Disables SSL certificate validation if set to False
+        timeout: Specifies the number of seconds to wait when sending requests to the device.
 
     Exceptions:
         InvalidOptionError: Raised when invalid options are used as arguments.
@@ -54,7 +56,7 @@ def token(device: str, username: str, password: str,
     data["loginProviderName"] = login_provider
     response = requests.post(
         f"https://{device}/mgmt/shared/authn/login",
-        json=data, verify=False, auth=auth)
+        json=data, verify=verify, auth=auth, timeout=timeout)
     if response.status_code != 200:
         raise RESTAPIError(response, debug)
     return response.json()["token"]["token"]
@@ -62,7 +64,7 @@ def token(device: str, username: str, password: str,
 
 def refresh_token(device: str, username: str, password: str,
                   login_provider: str = "tmos",
-                  debug: str = None) -> str:
+                  debug: str = None, verify: bool = True, timeout: int = 10) -> str:
     """
     Gets a refresh token from the device.
 
@@ -72,6 +74,8 @@ def refresh_token(device: str, username: str, password: str,
         password: Password used to login to the device.
         login_provider: Login provider used to authenticate the user.
         debug: Debug file name to be used to output the debug information.
+        verify: Disables SSL certificate validation if set to False
+        timeout: Specifies the number of seconds to wait when sending requests to the device.
 
     Exceptions:
         InvalidOptionError: Raised when invalid options are used as arguments.
@@ -85,7 +89,7 @@ def refresh_token(device: str, username: str, password: str,
     data["loginProviderName"] = login_provider
     response = requests.post(
         f"https://{device}/mgmt/shared/authn/login",
-        json=data, verify=False, auth=auth)
+        json=data, verify=verify, auth=auth, timeout=timeout)
     if response.status_code != 200:
         raise RESTAPIError(response, debug)
     response_json = response.json()

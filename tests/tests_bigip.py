@@ -224,7 +224,7 @@ else:
 device = BIGIP(ip, username, password, request_token=True)
 
 # Create a device object to use token
-token_ = token(ip, username, password)
+token_ = token(ip, username, password, verify=False)
 device = BIGIP(ip, token=token_)
 
 # Delete pool member

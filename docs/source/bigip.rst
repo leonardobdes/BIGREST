@@ -25,3 +25,7 @@ Explanation
 | For HTTP request with a binary body, curl command will end with "--data-binary @filename", replace filename with the file you were uploading.
 | Take into account there is a limit of 1MB per HTTP request in the REST API, for large files you need to send the file in chunks.
 | BIGREST does that automatically, but you need to do manually when using curl.
+
+| By default the BIGREST will validate the SSL certificate, you can set session_verify=False to disable that.
+
+| Timeout parameter defaults to 5 seconds, so it will wait up to 5 seconds for the device to response.
