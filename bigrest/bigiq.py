@@ -29,6 +29,7 @@ class BIGIQ(BIG):
         refresh_token: Refresh token to be used to request new token,
             the new token will be then used for HTTP requests.
         debug: Debug file name to be used to output the debug information.
+        session_verify: Disables SSL certificate validation if set to False
 
     Exceptions:
         InvalidOptionError: Raised when invalid options are used as arguments.

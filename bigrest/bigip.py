@@ -28,6 +28,7 @@ class BIGIP(BIG):
             device and used for HTTP requests.
         token: Token to be used to send HTTP requests to the device.
         debug: Debug file name to be used to output the debug information.
+        session_verify: Disables SSL certificate validation if set to False
 
     Exceptions:
         InvalidOptionError: Raised when invalid options are used as arguments.
