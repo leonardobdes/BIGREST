@@ -28,4 +28,4 @@ Explanation
 
 | By default the BIGREST will validate the SSL certificate, you can set session_verify=False to disable that.
 
-| Timeout parameter defaults to 5 seconds, so it will wait up to 5 seconds for the device to response.
+| Timeout parameter defaults to 5 seconds, so it will wait up to 10 seconds for the device to response.

@@ -43,7 +43,7 @@ class BIG:
             the new token will be then used for HTTP requests.
         debug: Debug file name to be used to output the debug information.
         session_verify: Disables SSL certificate validation if set to False
-        timeout: Specifies the number of seconds to wait when sending requests to the device.
+        timeout: Specifies the number of seconds to wait for a response from the device.
 
     Exceptions:
         InvalidOptionError: Raised when invalid options are used as arguments.

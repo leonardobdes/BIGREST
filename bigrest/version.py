@@ -1,6 +1,6 @@
 """File with version and history information."""
 
-__version__ = '1.7.0'
+__version__ = '1.7.2'
 
 """
 History Information:
@@ -43,4 +43,8 @@ History Information:
     Fixed test scripts to have session_verify=False.
 1.7.0
     Added option to set a connection timeout.
+1.7.1
+    Fixed documentation errors.
+1.7.2
+    Fixed small bugs in the tests.
 """

@@ -221,11 +221,11 @@ else:
     raise Exception("Different md5s.")
 
 # Create a device object with basic authentication and request_token
-device = BIGIP(ip, username, password, request_token=True)
+device = BIGIP(ip, username, password, request_token=True, session_verify=False)
 
 # Create a device object to use token
 token_ = token(ip, username, password, verify=False)
-device = BIGIP(ip, token=token_)
+device = BIGIP(ip, token=token_, session_verify=False)
 
 # Delete pool member
 path = (
