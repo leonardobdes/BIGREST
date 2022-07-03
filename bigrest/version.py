@@ -1,6 +1,6 @@
 """File with version and history information."""
 
-__version__ = '1.4.0'
+__version__ = '1.5.0'
 
 """
 History Information:
@@ -35,4 +35,6 @@ History Information:
     Fixed documentation typos in bigiq_load.rst and utils.rst files.
 1.4.0
     Fixed issue #13
+1.5.0
+    Fixed typo and allow response code from 200 until 207 in download method.
 """
