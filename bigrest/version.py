@@ -1,6 +1,6 @@
 """File with version and history information."""
 
-__version__ = '1.7.2'
+__version__ = '1.7.3'
 
 """
 History Information:
@@ -47,4 +47,6 @@ History Information:
     Fixed documentation errors.
 1.7.2
     Fixed small bugs in the tests.
+1.7.3
+    Fixed large lines.
 """

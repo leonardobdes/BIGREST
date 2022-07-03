@@ -456,7 +456,8 @@ class BIG:
             data = {}
             data["refreshToken"] = data_token
             response = self.session.post(
-                f"https://{self.device}/mgmt/shared/authn/exchange", json=data, timeout=self.timeout)
+                f"https://{self.device}/mgmt/shared/authn/exchange",
+                json=data, timeout=self.timeout)
         if response.status_code != 200:
             raise RESTAPIError(response, self.debug)
         self._token_counter = time.time()
