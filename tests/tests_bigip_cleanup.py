@@ -22,7 +22,7 @@ print("Device IP or name: ", end="")
 ip = input()
 
 # Create a device object
-device = BIGIP(ip, username, password)
+device = BIGIP(ip, username, password, session_verify=False)
 
 # Objects list
 pool_name = "/bigrest/bigrest_pool"

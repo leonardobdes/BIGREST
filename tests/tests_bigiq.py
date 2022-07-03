@@ -24,7 +24,7 @@ print("Device IP or name: ", end="")
 ip = input()
 
 # Create a device object with basic authentication
-device = BIGIQ(ip, username, password, debug="debug.txt")
+device = BIGIQ(ip, username, password, debug="debug.txt", session_verify=False)
 
 # Objects list
 device_name = "LABBIGIP1.lab.local"
@@ -252,15 +252,15 @@ else:
     raise Exception("Different md5s.")
 
 # Create a device object with basic authentication and request_token
-device = BIGIQ(ip, username, password, request_token=True)
+device = BIGIQ(ip, username, password, request_token=True, session_verify=False)
 
 # Create a device object to use token
 token_ = token(ip, username, password)
-device = BIGIQ(ip, username, password, token=token_)
+device = BIGIQ(ip, username, password, token=token_, session_verify=False)
 
 # Create a device object to use refresh token
 refresh_token_ = refresh_token(ip, username, password)
-device = BIGIQ(ip, refresh_token=refresh_token_)
+device = BIGIQ(ip, refresh_token=refresh_token_, session_verify=False)
 
 # Delete pool member
 path = (

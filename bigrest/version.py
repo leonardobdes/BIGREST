@@ -1,6 +1,6 @@
 """File with version and history information."""
 
-__version__ = '1.6.0'
+__version__ = '1.6.1'
 
 """
 History Information:
@@ -39,4 +39,6 @@ History Information:
     Fixed typo and allow response code from 200 until 207 in download method.
 1.6.0
     Allow users to choose to check SSL certificates or not.
+1.6.1
+    Fixed test scripts to have session_verify=False.
 """
