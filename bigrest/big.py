@@ -297,7 +297,7 @@ class BIG:
             self._check_token()
         filename_without_path = pathlib.PurePath(filename).name
         url = self._get_url(path)
-        url = f"{url}/{filename_without_path}"
+        url = f"{url}"
         self.session.headers.update(
             {"Content-Type": "application/octet-stream"})
         range_size = REST_API_MAXIMUM_CHUNK_SIZE - 1

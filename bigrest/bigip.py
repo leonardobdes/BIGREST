@@ -62,18 +62,18 @@ class BIGIP(BIG):
             self._check_token()
         url = self._get_url(path)
         response = self.session.post(url, json=data, timeout=self.timeout)
-        if response.status_code != 200:
+        if response.status_code not in [200, 201]:
             raise RESTAPIError(response, self.debug)
-        id_ = response.json()["_taskId"]
+        id_ = response.json()["id"]
         data = {}
-        data["_taskState"] = "VALIDATING"
+        data["status"] = "VALIDATING"
         url = f"{url}/{id_}"
-        response_put = self.session.put(url, json=data, timeout=self.timeout)
-        if response_put.status_code != 202:
+        response_put = self.session.get(url, timeout=self.timeout)
+        if response_put.status_code not in [200, 202]:
             raise RESTAPIError(response_put)
         return RESTObject(response.json())
 
-    def task_wait(self, obj: RESTObject, interval: int = 10) -> None:
+    def task_wait(self, obj: RESTObject, interval: int = 10) -> RESTObject:
         """
         Continually queries the status of the task until it finishes.
 
@@ -97,11 +97,11 @@ class BIGIP(BIG):
             response = self.session.get(url, timeout=self.timeout)
             if response.status_code != 200:
                 raise RESTAPIError(response, self.debug)
-            status = response.json()["_taskState"]
-            if status == "FAILED":
+            status = response.json()["status"]
+            if status == "FAILURE":
                 raise RESTAPIError(response, self.debug)
             if status == "COMPLETED":
-                return
+                return RESTObject(response.json())
             else:
                 time.sleep(interval)
 
@@ -125,8 +125,8 @@ class BIGIP(BIG):
         response = self.session.get(url, timeout=self.timeout)
         if response.status_code != 200:
             raise RESTAPIError(response, self.debug)
-        status = response.json()["_taskState"]
-        if status == "FAILED":
+        status = response.json()["status"]
+        if status == "FAILURE":
             raise RESTAPIError(response, self.debug)
         if status == "COMPLETED":
             return True

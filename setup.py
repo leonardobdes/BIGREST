@@ -11,7 +11,7 @@ setuptools.setup(
     description="A Python SDK for F5 iControl REST API",
     long_description=long_description,
     long_description_content_type="text/x-rst",
-    url="https://github.com/leonardobdes/BIGREST",
+    url="https://github.com/mosmohamed/BIGREST",
     packages=setuptools.find_packages(exclude=("tests",)),
     classifiers=[
         "Programming Language :: Python :: 3",
