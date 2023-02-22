@@ -278,7 +278,7 @@ class BIG:
         else:
             return str()
 
-    def download(self, path: str, filename: str) -> None:
+    def download(self, path: str, filename: str, dir="downloads") -> None:
         """
         Downloads a file from the device.
 
@@ -291,6 +291,8 @@ class BIG:
         Exceptions:
             RESTAPIError: Raised when iControl REST API returns an error.
         """
+
+        download_path = pathlib.Path(dir).mkdir(parents=True, exist_ok=True)
 
         # Content-Range: <range-start>-<range-end>/<size>
         if self.request_token or self.refresh_token is not None:
@@ -311,7 +313,7 @@ class BIG:
         range_end = range_start + range_size
         size = int(content_range.split("/")[1])
         size = size - 1
-        with open(filename, "wb") as file_:
+        with open(f"{dir}/{filename}", "wb") as file_:
             file_.write(response.content)
             while size >= range_start:
                 if range_end > size:
@@ -328,7 +330,8 @@ class BIG:
         self.session.headers.pop("Content-Range")
         self.session.headers.update({"Content-Type": "application/json"})
 
-    def upload(self, path: str, filename: str) -> None:
+
+    def upload(self, path: str, filename: str, dir='downloads') -> None:
         """
         Uploads a file to the device.
 
@@ -353,8 +356,9 @@ class BIG:
         range_start = 0
         range_size = REST_API_MAXIMUM_CHUNK_SIZE - 1
         range_end = range_size
-        size = pathlib.Path(filename).stat().st_size - 1
-        with open(filename, "rb") as file_:
+        file = f"{dir}/{filename}"
+        size = pathlib.Path(file).stat().st_size - 1
+        with open(file, "rb") as file_:
             if size <= range_size:
                 self.session.headers.update(
                     {"Content-Range": f"{range_start}-{size}/{size + 1}"})
@@ -377,6 +381,7 @@ class BIG:
                     range_end = range_end + range_size + 1
         self.session.headers.pop("Content-Range")
         self.session.headers.update({"Content-Type": "application/json"})
+
 
     def example(self, path: str) -> RESTObject:
         """
