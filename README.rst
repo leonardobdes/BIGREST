@@ -56,10 +56,10 @@ https://github.com/leonardobdes/BIGREST
 Author
 ------
 
-| **Name:**
+| Name:
 | Leonardo Souza
 
-| **LinkedIn:**
+| LinkedIn:
 | https://uk.linkedin.com/in/leonardobdes
 
 Contributor
