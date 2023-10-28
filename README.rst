@@ -65,16 +65,22 @@ Author
 Contributor
 ------------
 
-| **Name:**
+| Name:
 | Jason Rahm
 
-| **LinkedIn:**
+| LinkedIn:
 | https://www.linkedin.com/in/jrahm
 
 How to install?
 ---------------
 
-**Requires Python version 3.7**
+Requires Python version 3.7 or above.
+
+Requires **requests** package:
+
+.. code-block:: python
+
+   pip install requests
 
 Install BIGREST using Python **pip**:
 
@@ -85,7 +91,7 @@ Install BIGREST using Python **pip**:
 How to use it?
 ---------------
 
-**In the following example:**
+In the following example:
 
 :192.168.1.245:
     IP or name of the F5 device.
@@ -94,19 +100,19 @@ How to use it?
 :password:
     Password to be used to connect to the device.
 
-**First, import the SDK:**
+First, import the SDK:
 
 .. code-block:: python
 
    from bigrest.bigip import BIGIP
 
-**Next, create a device object:**
+Next, create a device object:
 
 .. code-block:: python
 
    device = BIGIP("192.168.1.245", "admin", "password")
 
-**Lastily, load all virtual servers and print their names:**
+Lastily, load all virtual servers and print their names:
 
 .. code-block:: python
 
@@ -136,11 +142,11 @@ Run the following command to find the version you are using.
 
    pip show bigrest
 
-**F5 device type:**
+F5 device type:
 
 BIG-IP or BIG-IQ
 
-**F5 device version:**
+F5 device version:
 
 Run the following command to find the version you are using.
 
@@ -148,9 +154,9 @@ Run the following command to find the version you are using.
 
    tmsh show sys version
 
-**Python code to replicate the bug.**
+Python code to replicate the bug.
 
-**Output generated when the bug is triggered.**
+Output generated when the bug is triggered.
 
 How to request new functionalities?
 -----------------------------------
