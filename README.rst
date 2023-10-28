@@ -76,7 +76,7 @@ How to install?
 
 Requires Python version 3.7 or above.
 
-Requires **requests** package:
+Requires **requests** package, install using Python **pip**:
 
 .. code-block:: python
 
