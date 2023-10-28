@@ -141,7 +141,7 @@ Run the following command to find the version you are using.
 
    pip show bigrest
 
-**F5 device type:**
+F5 device type:
 
 BIG-IP or BIG-IQ
 
