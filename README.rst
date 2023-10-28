@@ -60,7 +60,6 @@ Author
 
 Name:
 Leonardo Souza
-
 LinkedIn:
 https://uk.linkedin.com/in/leonardobdes
 
@@ -69,7 +68,6 @@ Contributor
 
 Name:
 Jason Rahm
-
 LinkedIn:
 https://www.linkedin.com/in/jrahm
 
