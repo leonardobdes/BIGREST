@@ -93,12 +93,11 @@ How to use it?
 
 In the following example:
 
-:192.168.1.245:
-    IP or name of the F5 device.
-:admin:
-    Username to be used to connect to the device.
-:password:
-    Password to be used to connect to the device.
+=============     =============================================
+192.168.1.245     IP or name of the F5 device.
+admin             Username to be used to connect to the device.
+password          Password to be used to connect to the device.
+=============     =============================================
 
 First, import the SDK:
 
