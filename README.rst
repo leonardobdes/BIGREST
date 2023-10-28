@@ -1,10 +1,10 @@
 What is BIGREST?
 ----------------
 
-F5 BIG-IP and BIG-IQ devices have an API called iControl REST.
-BIGREST is an SDK with multiple methods and functions that simplifies the use of the iControl REST API.
-
-BIGIP Next and BIGIP Next Central Manager are not supported by BIGREST.
+| F5 BIG-IP and BIG-IQ devices have an API called iControl REST.
+| BIGREST is an SDK with multiple methods and functions that simplifies the use of the iControl REST API.
+|
+| BIGIP Next and BIGIP Next Central Manager are not supported by BIGREST.
 
 What is useful for?
 -------------------
