@@ -1,34 +1,34 @@
 What is BIGREST?
 ----------------
 
-F5 BIG-IP and BIG-IQ devices have an API called iControl REST.
-BIGREST is an SDK with multiple methods and functions that simplifies the use of the iControl REST API.
-
-BIGIP Next and BIGIP Next Central Manager are not supported by BIGREST.
+| F5 BIG-IP and BIG-IQ devices have an API called iControl REST.
+| BIGREST is an SDK with multiple methods and functions that simplifies the use of the iControl REST API.
+|
+| BIGIP Next and BIGIP Next Central Manager are not supported by BIGREST.
 
 What is useful for?
 -------------------
 
-If you want to automate tasks on a BIG-IP or BIG-IQ devices, one of the options is to use the iControl REST API.
-If you interact with the API directly, you will have to know how the API works, including headers, tokens, etc...
-Probably, you will end up scripting those tasks using a programming language, and creating some functions you normally use.
-
-BIGREST removes that work, as it includes those functions that you normally use.
-It creates a kind of abstraction layer on to of the API.
+| If you want to automate tasks on a BIG-IP or BIG-IQ devices, one of the options is to use the iControl REST API.
+| If you interact with the API directly, you will have to know how the API works, including headers, tokens, etc...
+| Probably, you will end up scripting those tasks using a programming language, and creating some functions you normally use.
+|
+| BIGREST removes that work, as it includes those functions that you normally use.
+| It creates a kind of abstraction layer on to of the API.
 
 Why create another SDK?
 -----------------------
 
-This was one of the first questions I got when BIGREST was released.
-In case you don't know, there was already an SDK (https://github.com/F5Networks/f5-common-python) before BIGREST was created.
-
-I have used the other SDK, and I did initially wanted to support and expand it.
-However, the approach that was taken in that SDK to defined every HTTP path as Python modules made it difficult to expand and support it.
-For example, it just supports very few BIG-IQ functionalities.
-
-On the other hand, BIGREST tries to be more generic as possible, and the user has to indicate the HTTP path they want to use.
-This means any new HTTP path included on the next version will be automatically available on BIGREST.
-Also, with this generic approach, it fully supports both BIG-IP and BIG-IQ.
+| This was one of the first questions I got when BIGREST was released.
+| In case you don't know, there was already an SDK (https://github.com/F5Networks/f5-common-python) before BIGREST was created.
+|
+| I have used the other SDK, and I did initially wanted to support and expand it.
+| However, the approach that was taken in that SDK to defined every HTTP path as Python modules made it difficult to expand and support it.
+| For example, it just supports very few BIG-IQ functionalities.
+|
+| On the other hand, BIGREST tries to be more generic as possible, and the user has to indicate the HTTP path they want to use.
+| This means any new HTTP path included on the next version will be automatically available on BIGREST.
+| Also, with this generic approach, it fully supports both BIG-IP and BIG-IQ.
 
 BIGREST functionalities
 -----------------------
@@ -58,18 +58,18 @@ https://github.com/leonardobdes/BIGREST
 Author
 ------
 
-Name:
-Leonardo Souza
-LinkedIn:
-https://uk.linkedin.com/in/leonardobdes
+| Name:
+| Leonardo Souza
+| LinkedIn:
+| https://uk.linkedin.com/in/leonardobdes
 
 Contributor
 ------------
 
-Name:
-Jason Rahm
-LinkedIn:
-https://www.linkedin.com/in/jrahm
+| Name:
+| Jason Rahm
+| LinkedIn:
+| https://www.linkedin.com/in/jrahm
 
 How to install?
 ---------------
@@ -130,8 +130,8 @@ If you have problems using this SDK, or to understand how the F5 iControl REST A
 How to report bugs?
 -------------------
 
-Use `GitHub <https://github.com/leonardobdes/BIGREST/issues>`_ issues to report bugs.
-For any bug, please provide the following information.
+| Use `GitHub <https://github.com/leonardobdes/BIGREST/issues>`_ issues to report bugs.
+| For any bug, please provide the following information.
 
 BIGREST version:**
 
@@ -160,5 +160,5 @@ Output generated when the bug is triggered.
 How to request new functionalities?
 -----------------------------------
 
-Use `GitHub <https://github.com/leonardobdes/BIGREST/issues>`_ issues to request new functionalities.
-Use the following format in the title **RFE - Title**.
+| Use `GitHub <https://github.com/leonardobdes/BIGREST/issues>`_ issues to request new functionalities.
+| Use the following format in the title **RFE - Title**.
