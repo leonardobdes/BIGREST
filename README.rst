@@ -132,8 +132,8 @@ How to report bugs?
 
 | Use `GitHub <https://github.com/leonardobdes/BIGREST/issues>`_ issues to report bugs.
 | For any bug, please provide the following information.
-
-BIGREST version:**
+|
+BIGREST version:
 
 Run the following command to find the version you are using.
 
@@ -141,7 +141,7 @@ Run the following command to find the version you are using.
 
    pip show bigrest
 
-F5 device type:
+**F5 device type:**
 
 BIG-IP or BIG-IQ
 
