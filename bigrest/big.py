@@ -95,7 +95,7 @@ class BIG:
         # Connect to device
         self._connect()
 
-    def load(self, path: str) -> Union[list[RESTObject], RESTObject]:
+    def load(self, path: str, pagination: bool) -> Union[list[RESTObject], RESTObject]:
         """
         Loads one object or a list of objects from the device.
         If you call with a specific object name, it returns a single object.
@@ -105,6 +105,7 @@ class BIG:
 
         Arguments:
             path: HTTP path used in the HTTP request sent to the device.
+            pagination: boolean value to return pagination keys with dict items
 
         Exceptions:
             RESTAPIError: Raised when iControl REST API returns an error.
@@ -117,10 +118,11 @@ class BIG:
         if response.status_code != 200:
             raise RESTAPIError(response, self.debug)
         response_json = response.json()
-        if "items" in response_json:
+        if "items" in response_json and not pagination:
             objects = []
             for obj in response_json["items"]:
                 objects.append(RESTObject(obj))
+
             return objects
         else:
             return RESTObject(response_json)
@@ -292,7 +294,7 @@ class BIG:
             RESTAPIError: Raised when iControl REST API returns an error.
         """
 
-        download_path = pathlib.Path(dir).mkdir(parents=True, exist_ok=True)
+        pathlib.Path(dir).mkdir(parents=True, exist_ok=True)
 
         # Content-Range: <range-start>-<range-end>/<size>
         if self.request_token or self.refresh_token is not None:
@@ -313,7 +315,7 @@ class BIG:
         range_end = range_start + range_size
         size = int(content_range.split("/")[1])
         size = size - 1
-        with open(f"{dir}/{filename}", "wb") as file_:
+        with open(f"{dir}/{filename_without_path}", "wb") as file_:
             file_.write(response.content)
             while size >= range_start:
                 if range_end > size:
@@ -356,7 +358,7 @@ class BIG:
         range_start = 0
         range_size = REST_API_MAXIMUM_CHUNK_SIZE - 1
         range_end = range_size
-        file = f"{dir}/{filename}"
+        file = f"{dir}/{filename_without_path}"
         size = pathlib.Path(file).stat().st_size - 1
         with open(file, "rb") as file_:
             if size <= range_size:
