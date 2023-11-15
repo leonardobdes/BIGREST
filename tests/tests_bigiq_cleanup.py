@@ -178,16 +178,16 @@ device_link2 = device.link(path)
 
 # Remove config from devices
 data = {
-   "name": "BIGREST remove config from device",
-   "deviceReferences": [
+    "name": "BIGREST remove config from device",
+    "deviceReferences": [
         {
             "link": device_link
         },
         {
             "link": device_link2
         }
-   ],
-   "disableUnusedObjectRemoval": True
+    ],
+    "disableUnusedObjectRemoval": True
 }
 task = device.task_start(
     "/mgmt/cm/adc-core/tasks/deploy-configuration", data)

@@ -1,7 +1,18 @@
+# External Imports
+# Import only with "import package",
+# it will make explicity in the code where it came from.
+
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../..'))
+
+# Internal Imports
+# Import only with "from x import y", to simplify the code.
+
 from bigrest.version import __version__
+
+
+# Required indicate the path for root folder
+sys.path.insert(0, os.path.abspath('../..'))
 
 
 # Configuration file for the Sphinx documentation builder.

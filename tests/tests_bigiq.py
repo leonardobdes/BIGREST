@@ -136,16 +136,16 @@ else:
 
 # Deploy configuration - task test
 data = {
-   "name": "BIGREST Add config to device",
-   "deviceReferences": [
+    "name": "BIGREST Add config to device",
+    "deviceReferences": [
         {
             "link": device_link
         },
         {
             "link": device_link2
         }
-   ],
-   "disableUnusedObjectRemoval": True
+    ],
+    "disableUnusedObjectRemoval": True
 }
 task = device.task_start(
     "/mgmt/cm/adc-core/tasks/deploy-configuration", data)
@@ -296,16 +296,16 @@ print(f"Remote file {filename} deleted.")
 
 # Remove configuration
 data = {
-   "name": "BIGREST remove config to device",
-   "deviceReferences": [
+    "name": "BIGREST remove config to device",
+    "deviceReferences": [
         {
             "link": device_link
         },
         {
             "link": device_link2
         }
-   ],
-   "disableUnusedObjectRemoval": True
+    ],
+    "disableUnusedObjectRemoval": True
 }
 task = device.task_start(
     "/mgmt/cm/adc-core/tasks/deploy-configuration", data)
