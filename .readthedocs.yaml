@@ -10,6 +10,8 @@ build:
     python: "3"
   commands:
     - pip install bigrest
+    - mkdir --parents _readthedocs/html/
+    - cp --recursive docs/build/* _readthedocs/html/
 
 sphinx:
   configuration: docs/source/conf.py
