@@ -35,7 +35,7 @@ sys.path.insert(0, os.path.abspath('../..'))
 # -- Project information -----------------------------------------------------
 
 project = 'BIGREST'
-copyright = '2020, Leonardo Souza'
+copyright = 'Leonardo Souza'
 author = 'Leonardo Souza'
 
 # The full version, including alpha/beta/rc tags
