@@ -10,11 +10,10 @@ build:
     python: "3"
   commands:
     - pip install bigrest sphinx sphinx_rtd_theme
-    - cd docs
-    - make html
+    - make -C docs html
     - mkdir --parents _readthedocs/html/
-    - cp --recursive build/* _readthedocs/html/
+    - cp --recursive docs/build/* _readthedocs/html/
 
-sphinx:
-  configuration: docs/source/conf.py
+#sphinx:
+#  configuration: docs/source/conf.py
 #  fail_on_warning: true
