@@ -2,7 +2,7 @@ Support
 -------
 | I am no longer supporting this project with new functionalities or bug fixes.
 | Version 1.7.3 is the latest and it will continue available for download.
-| Jason Rahm has forked the project, and you can see his work here (https://github.com/f5-rahm/BIGREST).
+| Jason Rahm has forked the project, and you can see his work here https://github.com/f5-rahm/BIGREST.
 
 What is BIGREST?
 ----------------
